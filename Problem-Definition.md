@@ -19,18 +19,22 @@ A customer leases the device for a **court/state-mandated period** (the
 eligible, the device must be **physically removed at a service center**, which
 requires booking an appointment.
 
-**How a customer requests removal today** (see screenshots / app form):
-- Through the **mobile app**, by submitting a *Device Removal Request* form
-  (preferred date/time, eligibility confirmation, and a contact method — phone
-  or email), **or**
-- By **calling Intoxalock** on the phone.
+**How a customer requests removal today** — there are exactly **two** channels:
 
-After submitting, the app shows the message:
+1. **Mobile app** — the customer confirms eligibility on the *Device Removal*
+   screen, then submits a *Device Removal Request* form specifying a **first and
+   second preferred date/time** and a **preferred confirmation contact** (phone
+   or email).
+2. **By phone** — Intoxalock instructs customers to *"Call 888-283-5899 to
+   Schedule Device Removal,"* where a live agent takes the request.
+
+After an app submission, the customer sees:
 > *"Your request has been sent and will be worked in the order received. A
 > representative will follow up with your appointment details once scheduled."*
 
-This single sentence is the heart of the problem: **a removal request is not a
-confirmed appointment.**
+This message is the heart of the problem: **a removal request is not a confirmed
+appointment** — and, per Intoxalock's own guidance, the service center *"cannot
+remove [the] device without a de-installation work order from Intoxalock."*
 
 ---
 
@@ -57,7 +61,7 @@ The breakpoints:
 | 2 | **Request ≠ appointment** | The customer often believes the submitted request **is a confirmed appointment**, then shows up at the shop. |
 | 3 | **Manual agent handoff** | Every request must be **picked up and worked by a human agent**; nothing is automated. |
 | 4 | **No availability data** | Service centers are independent and provide **no real-time availability and no API**. The agent has no way to see open slots and must **call the shop directly**. |
-| 5 | **Centers don't answer** | Calls go unanswered. Historically these were **"one-and-done"** — no enforced callback — so requests **stall or get dropped** and follow-ups are missed. |
+| 5 | **Service Centers don't answer** | Calls go unanswered. Historically these were **"one-and-done"** — no enforced callback — so requests **stall or get dropped** and follow-ups are missed. |
 | 6 | **Quote depends on vehicle** | During the same call, the agent must also obtain a **price quote**, which depends on the **customer's vehicle type**. This data has to be looked up and the quote captured manually, and it may still change. |
 | 7 | **Eligibility / paperwork mix** | Some removals require **state documentation/paperwork** and some do not. These cases are mixed together, so not every request can be safely automated or honored. |
 | 8 | **Arrival without a work order** | Because the request was never truly confirmed, the customer arrives and the **service center refuses service without a valid work order → escalation.** |
