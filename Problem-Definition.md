@@ -26,7 +26,7 @@ requires booking an appointment.
    second preferred date/time** and a **preferred confirmation contact** (phone
    or email).
 2. **By phone** — Intoxalock instructs customers to *"Call 888-283-5899 to
-   Schedule Device Removal,"* where a live agent takes the request.
+   Schedule Device Removal,"* where a live representative takes the request.
 
 After an app submission, the customer sees:
 > *"Your request has been sent and will be worked in the order received. A
@@ -41,17 +41,40 @@ remove [the] device without a de-installation work order from Intoxalock."*
 ## 2. Problem Statement
 
 > Scheduling a device removal is a **manual, phone-based coordination process**
-> between Intoxalock agents and independent service centers that have **no
+> between Intoxalock representatives and independent service centers that have **no
 > real-time availability and no scheduling API**. As a result, requests are slow
 > to confirm, frequently dropped, and routinely confused by customers for real
-> appointments — driving avoidable escalations, repeated work for agents, and a
+> appointments — driving avoidable escalations, repeated work for representatives, and a
 > poor customer experience.
+
+---
+
+## 2.1 Project goal (expected outcome)
+
+> The customer experience today is **poor**: a removal request gives no real
+> confirmation, can sit unworked for days, frequently stalls when a center
+> doesn't answer, and too often ends with the customer being **turned away at the
+> shop**. The goal of this project is to **fix that experience** — to turn an
+> ambiguous, manual, drop-prone request into a **clear, reliably-confirmed
+> appointment**.
+
+Concretely, success means:
+
+- **Clarity** — the customer always knows whether they have a *request* or a
+  *confirmed appointment*, and never shows up to a center without a valid work
+  order.
+- **Reliability** — a request is not silently dropped; unanswered centers are
+  followed up on until the booking is resolved, instead of "one-and-done."
+- **Speed** — confirmation happens in a predictable, short timeframe rather than
+  depending on a representative manually getting to a queued request "later."
+- **Less friction for everyone** — fewer repeated calls and manual lookups for
+  representatives, fewer escalations, and no wasted trips for customers.
 
 ---
 
 ## 3. Where it breaks (the current journey)
 
-A removal request must travel from the customer, through a human agent, to an
+A removal request must travel from the customer, through a human representative, to an
 independent shop — and there is no automated link between any of these steps.
 The breakpoints:
 
@@ -59,10 +82,10 @@ The breakpoints:
 |---|-------|-----------------|
 | 1 | **Customer submits request** | The request can be made at any time, including **impractical slots** (e.g., 10 p.m. for an 8 a.m. next-day appointment) and when the target center is **closed**. The form does not validate against real operating hours. |
 | 2 | **Request ≠ appointment** | The customer often believes the submitted request **is a confirmed appointment**, then shows up at the shop. |
-| 3 | **Manual agent handoff** | Every request must be **picked up and worked by a human agent**; nothing is automated. |
-| 4 | **No availability data** | Service centers are independent and provide **no real-time availability and no API**. The agent has no way to see open slots and must **call the shop directly**. |
+| 3 | **Manual representative handoff** | Every request must be **picked up and worked by a human representative**; nothing is automated. |
+| 4 | **No availability data** | Service centers are independent and provide **no real-time availability and no API**. The representative has no way to see open slots and must **call the shop directly**. |
 | 5 | **Service Centers don't answer** | Calls go unanswered. Historically these were **"one-and-done"** — no enforced callback — so requests **stall or get dropped** and follow-ups are missed. |
-| 6 | **Quote depends on vehicle** | During the same call, the agent must also obtain a **price quote**, which depends on the **customer's vehicle type**. This data has to be looked up and the quote captured manually, and it may still change. |
+| 6 | **Quote depends on vehicle** | During the same call, the representative must also obtain a **price quote**, which depends on the **customer's vehicle type**. This data has to be looked up and the quote captured manually, and it may still change. |
 | 7 | **Eligibility / paperwork mix** | Some removals require **state documentation/paperwork** and some do not. These cases are mixed together, so not every request can be safely automated or honored. |
 | 8 | **Arrival without a work order** | Because the request was never truly confirmed, the customer arrives and the **service center refuses service without a valid work order → escalation.** |
 
@@ -70,7 +93,7 @@ The breakpoints:
 
 ## 4. Impact
 
-- **Inefficient agent workload** — repeated manual calls, retries, and lookups for every request.
+- **Inefficient representative workload** — repeated manual calls, retries, and lookups for every request.
 - **Dropped / stalled requests** — unanswered centers lead to missed follow-ups and abandoned cases.
 - **Poor customer experience** — long waits, no clear confirmation, wasted trips.
 - **Escalations** — customers turned away at the shop without a work order.
@@ -81,7 +104,7 @@ The breakpoints:
 ## 5. Stakeholders
 
 - **Customers** — need a confirmed removal appointment to end their program.
-- **Intoxalock CX / agents** — manually coordinate every request by phone.
+- **Intoxalock representatives** — manually coordinate every request by phone.
 - **Independent service centers** — perform the removal; no shared scheduling system.
 - **State / monitoring authorities** — may require paperwork before removal is valid.
 
@@ -96,25 +119,3 @@ The breakpoints:
 5. **Manual quote capture** dependent on per-customer vehicle data.
 
 ---
-
-## 7. Out of scope (Phase 2 — solution)
-
-The following were discussed as *solutions* and are **not** part of this problem
-definition: AI/Twilio calling agent, automated retry logic and slot-locking,
-system-of-record/work-order updates, automated customer notifications,
-day-level availability, vehicle-type API integration into call scripts, and the
-ChatGPT-style knowledge-center chat.
-
----
-
-[^centers]: **Sourcing for the "5,500+" figure.** The location count is a
-    self-reported marketing claim on Intoxalock's homepage — *"With over 5,500
-    service centers, most locations are less than 15 minutes from customers'
-    home or work"* (intoxalock.com, accessed 2026-06-08). It is not
-    independently audited and is inconsistent across Intoxalock's own pages
-    (some cite "5,000+"), so treat it as approximate. The characterization of
-    the centers as *independently owned and operated* comes from the 06-04
-    meeting summary (*"mostly independent 'mom and pop' service centers"*) and
-    is corroborated by Intoxalock's public location directory, which lists
-    third-party business names (e.g., "Cars Now KC LLC", "Intense Kustom
-    Audio", "NJ Interlock Mobil Service").

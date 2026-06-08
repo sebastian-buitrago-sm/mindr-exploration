@@ -1,3 +1,5 @@
+
+- 
 - what is the proportion of request that neeeds a document ? 
 - the request that needs a document could be automated 
 - an user has only one service center posible or there could be several of them 
