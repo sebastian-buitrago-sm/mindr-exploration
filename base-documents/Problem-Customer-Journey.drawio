@@ -1,0 +1,112 @@
+<mxfile host="65bd71144e">
+    <diagram name="Problem - Customer Journey (today)" id="prob-journey-1">
+        <mxGraphModel dx="1430" dy="635" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1260" pageHeight="720" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="title" value="Intoxalock Device Removal — Customer Journey TODAY (current experience)" style="text;html=1;fontSize=16;fontStyle=1;align=center;fontColor=#7a2e2e;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="14" width="1180" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="st1" value="① REQUEST" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=13;fontColor=#2e4d77;" parent="1" vertex="1">
+                    <mxGeometry x="180" y="56" width="255" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="st2" value="② WAITING (manual queue)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2e0;strokeColor=#d79b00;fontStyle=1;fontSize=13;fontColor=#8a5a00;" parent="1" vertex="1">
+                    <mxGeometry x="440" y="56" width="255" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="st3" value="③ CONFIRMATION? (late / never)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontStyle=1;fontSize=13;fontColor=#8a5a00;" parent="1" vertex="1">
+                    <mxGeometry x="700" y="56" width="255" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="st4" value="④ APPOINTMENT DAY" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffd6d6;strokeColor=#b85450;fontStyle=1;fontSize=13;fontColor=#7a2e2e;" parent="1" vertex="1">
+                    <mxGeometry x="960" y="56" width="255" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="rDo" value="🟦 DOING" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f7f9fc;strokeColor=#b6c8e3;fontStyle=1;fontSize=11;align=left;verticalAlign=middle;spacingLeft=8;" parent="1" vertex="1">
+                    <mxGeometry x="20" y="106" width="150" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="rThink" value="💭 THINKING" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f7f9fc;strokeColor=#b6c8e3;fontStyle=1;fontSize=11;align=left;verticalAlign=middle;spacingLeft=8;" parent="1" vertex="1">
+                    <mxGeometry x="20" y="206" width="150" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="rFeel" value="❤ FEELING" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f7f9fc;strokeColor=#b6c8e3;fontStyle=1;fontSize=11;align=left;verticalAlign=middle;spacingLeft=8;" parent="1" vertex="1">
+                    <mxGeometry x="20" y="306" width="150" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="rTouch" value="📲 TOUCHPOINT" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f7f9fc;strokeColor=#b6c8e3;fontStyle=1;fontSize=11;align=left;verticalAlign=middle;spacingLeft=8;" parent="1" vertex="1">
+                    <mxGeometry x="20" y="436" width="150" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="rBack" value="🛠 BEHIND THE&#xa;SCENES" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontStyle=1;fontSize=11;align=left;verticalAlign=middle;spacingLeft=8;" parent="1" vertex="1">
+                    <mxGeometry x="20" y="536" width="150" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="do1" value="Submits a request via app or phone; picks 2 date-time — even impractical ones (10 p.m., or when the center is closed)." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cccccc;fontSize=11;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;" parent="1" vertex="1">
+                    <mxGeometry x="180" y="106" width="255" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="do2" value="Waits — hears nothing. May not even realize it still isn&#39;t confirmed, some of them get confuse and think the appoiment was actually booked." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cccccc;fontSize=11;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;" parent="1" vertex="1">
+                    <mxGeometry x="440" y="106" width="255" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="do3" value="Maybe gets a call eventually — or the request is silently dropped and no one calls." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cccccc;fontSize=11;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;" parent="1" vertex="1">
+                    <mxGeometry x="700" y="106" width="255" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="do4" value="&lt;div&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;Sometimes the user drives to the center expecting a removal — and is turned away (no valid work order).&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cccccc;fontSize=11;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;" parent="1" vertex="1">
+                    <mxGeometry x="960" y="106" width="255" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="th1" value="&quot;Is my appointment booked now? …and if not, when will I even hear back?&quot; (no date or ETA given — and some just assume it's already booked)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cccccc;fontSize=11;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;" parent="1" vertex="1">
+                    <mxGeometry x="180" y="206" width="255" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="th2" value="&quot;It&#39;s all set... right? Why haven&#39;t I heard anything?&quot;&lt;div&gt;(confusion)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cccccc;fontSize=11;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;" parent="1" vertex="1">
+                    <mxGeometry x="440" y="206" width="255" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="th3" value="&quot;Is this actually happening? Is it confirmed or not? Who do I call?&quot;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cccccc;fontSize=11;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;" parent="1" vertex="1">
+                    <mxGeometry x="700" y="206" width="255" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="th4" value="&quot;I took time off for this — and now they won&#39;t even see me?!&quot;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cccccc;fontSize=11;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;" parent="1" vertex="1">
+                    <mxGeometry x="960" y="206" width="255" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="feelRow" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fcfcfc;strokeColor=#e0e0e0;" parent="1" vertex="1">
+                    <mxGeometry x="180" y="306" width="1035" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="fe1" value="😕&#xa;confused&#xa;(or falsely sure)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="270" y="326" width="70" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="fe2" value="😟&#xa;uncertain" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="530" y="330" width="70" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="fe3" value="😣&#xa;frustrated" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="790" y="345" width="70" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="fe4" value="😡&#xa;turned away" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffd6d6;strokeColor=#b85450;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="1050" y="356" width="70" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="curve1" style="html=1;endArrow=none;strokeColor=#d6b656;strokeWidth=2;edgeStyle=orthogonalEdgeStyle;curved=1;" parent="1" source="fe1" target="fe2" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="curve2" style="html=1;endArrow=none;strokeColor=#d79b00;strokeWidth=2;edgeStyle=orthogonalEdgeStyle;curved=1;" parent="1" source="fe2" target="fe3" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="curve3" style="html=1;endArrow=none;strokeColor=#b85450;strokeWidth=3;edgeStyle=orthogonalEdgeStyle;curved=1;" parent="1" source="fe3" target="fe4" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="to1" value="App form / Phone call + &quot;worked in the order received&quot; — no date or ETA given." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#eef3fb;strokeColor=#6c8ebf;fontSize=11;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;" parent="1" vertex="1">
+                    <mxGeometry x="180" y="436" width="255" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="to2" value="Silence — no updates, no status." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff6e9;strokeColor=#d79b00;fontSize=11;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;" parent="1" vertex="1">
+                    <mxGeometry x="440" y="436" width="255" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="to3" value="An inconsistent phone call if reached — or nothing at all." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff6e9;strokeColor=#d79b00;fontSize=11;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;" parent="1" vertex="1">
+                    <mxGeometry x="700" y="436" width="255" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="to4" value="Face-to-face refusal at the service center → escalation to Intoxalock." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffd6d6;strokeColor=#b85450;fontSize=11;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;" parent="1" vertex="1">
+                    <mxGeometry x="960" y="436" width="255" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="bk1" value="No validation of service operating hours. Request is just queued; nothing is automated." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=10;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;" parent="1" vertex="1">
+                    <mxGeometry x="180" y="536" width="255" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="bk2" value="&quot;Later&quot; A representative manually picks it up and calls the service center. Center often doesn&#39;t answer and requests get no follow up.&amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=10;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;" parent="1" vertex="1">
+                    <mxGeometry x="440" y="536" width="255" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="bk3" value="If reached: confirm slot. If not: request stalls and is silently dropped." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=10;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;" parent="1" vertex="1">
+                    <mxGeometry x="700" y="536" width="255" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="bk4" value="No valid work order was ever issued / synced, so the center cannot perform the removal." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=10;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;" parent="1" vertex="1">
+                    <mxGeometry x="960" y="536" width="255" height="90" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

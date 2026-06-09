@@ -1,0 +1,115 @@
+<mxfile host="65bd71144e">
+    <diagram name="Ideal - Real-Time Availability Journey" id="sol-journey-ideal">
+        <mxGraphModel dx="760" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1260" pageHeight="720" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="title" value="Intoxalock Device Removal — IDEAL Customer Journey (centers expose real-time availability → instant confirmation)" style="text;html=1;fontSize=16;fontStyle=1;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="14" width="1180" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="st1" value="① BROWSE &amp; PICK" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=13;fontColor=#2e4d77;" parent="1" vertex="1">
+                    <mxGeometry x="180" y="56" width="255" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="st2" value="② INSTANT CONFIRMATION" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=13;fontColor=#2e5a2e;" parent="1" vertex="1">
+                    <mxGeometry x="440" y="56" width="255" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="st3" value="③ PRE-APPOINTMENT" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=13;fontColor=#2e5a2e;" parent="1" vertex="1">
+                    <mxGeometry x="700" y="56" width="255" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="st4" value="④ APPOINTMENT DAY" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=13;fontColor=#2e5a2e;" parent="1" vertex="1">
+                    <mxGeometry x="960" y="56" width="255" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="rDo" value="🟦 DOING" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f7f9fc;strokeColor=#b6c8e3;fontStyle=1;fontSize=11;align=left;verticalAlign=middle;spacingLeft=8;" parent="1" vertex="1">
+                    <mxGeometry x="20" y="106" width="150" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="rThink" value="💭 THINKING" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f7f9fc;strokeColor=#b6c8e3;fontStyle=1;fontSize=11;align=left;verticalAlign=middle;spacingLeft=8;" parent="1" vertex="1">
+                    <mxGeometry x="20" y="206" width="150" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="rFeel" value="❤ FEELING" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f7f9fc;strokeColor=#b6c8e3;fontStyle=1;fontSize=11;align=left;verticalAlign=middle;spacingLeft=8;" parent="1" vertex="1">
+                    <mxGeometry x="20" y="306" width="150" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="rTouch" value="📲 TOUCHPOINT" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f7f9fc;strokeColor=#b6c8e3;fontStyle=1;fontSize=11;align=left;verticalAlign=middle;spacingLeft=8;" parent="1" vertex="1">
+                    <mxGeometry x="20" y="436" width="150" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="rBack" value="🤖 BEHIND THE&#xa;SCENES" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontStyle=1;fontSize=11;align=left;verticalAlign=middle;spacingLeft=8;" parent="1" vertex="1">
+                    <mxGeometry x="20" y="536" width="150" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="do1" value="Confirms eligibility, then sees the assigned center's REAL open slots on a calendar and taps the one that works." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cccccc;fontSize=11;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;" parent="1" vertex="1">
+                    <mxGeometry x="180" y="106" width="255" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="do2" value="Sees &quot;CONFIRMED&quot; on the spot — exact date, time, and center. Nothing to wait for, nothing to chase." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cccccc;fontSize=11;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;" parent="1" vertex="1">
+                    <mxGeometry x="440" y="106" width="255" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="do3" value="Lives life. (Optional: reschedule by picking another open slot — still instant.)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cccccc;fontSize=11;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;" parent="1" vertex="1">
+                    <mxGeometry x="700" y="106" width="255" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="do4" value="Goes to the center at the set time; work order is already there; device is removed." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cccccc;fontSize=11;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;" parent="1" vertex="1">
+                    <mxGeometry x="960" y="106" width="255" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="th1" value="&quot;These are actual open times — I just pick whatever fits my schedule.&quot;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cccccc;fontSize=11;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;" parent="1" vertex="1">
+                    <mxGeometry x="180" y="206" width="255" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="th2" value="&quot;Done! It&#39;s booked for real — no waiting, no &#39;will they call me back?&#39;&quot;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cccccc;fontSize=11;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;" parent="1" vertex="1">
+                    <mxGeometry x="440" y="206" width="255" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="th3" value="&quot;It&#39;s on my calendar and I trust it. If I need to move it, I just pick another slot.&quot;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cccccc;fontSize=11;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;" parent="1" vertex="1">
+                    <mxGeometry x="700" y="206" width="255" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="th4" value="&quot;Walked in, they were expecting me, done. Easiest part of the whole program.&quot;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#cccccc;fontSize=11;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;" parent="1" vertex="1">
+                    <mxGeometry x="960" y="206" width="255" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="feelRow" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fcfcfc;strokeColor=#e0e0e0;" parent="1" vertex="1">
+                    <mxGeometry x="180" y="306" width="1035" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="fe1" value="🙂&#xa;in control" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="270" y="328" width="70" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="fe2" value="😄&#xa;delighted" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="530" y="316" width="70" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="fe3" value="😌&#xa;at ease" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="790" y="320" width="70" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="fe4" value="😄&#xa;confident" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="1050" y="316" width="70" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="curve1" style="html=1;endArrow=none;strokeColor=#82b366;strokeWidth=2;edgeStyle=orthogonalEdgeStyle;curved=1;" parent="1" source="fe1" target="fe2" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="curve2" style="html=1;endArrow=none;strokeColor=#82b366;strokeWidth=2;edgeStyle=orthogonalEdgeStyle;curved=1;" parent="1" source="fe2" target="fe3" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="curve3" style="html=1;endArrow=none;strokeColor=#82b366;strokeWidth=2;edgeStyle=orthogonalEdgeStyle;curved=1;" parent="1" source="fe3" target="fe4" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="to1" value="App / web calendar showing live open slots for the assigned center (constrained to eligibility &amp; lead time)." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#eef3fb;strokeColor=#6c8ebf;fontSize=11;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;" parent="1" vertex="1">
+                    <mxGeometry x="180" y="436" width="255" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="to2" value="Instant CONFIRMED message (SMS / email / push): date · time · center location · work-order reference." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#eafaea;strokeColor=#82b366;fontSize=11;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;" parent="1" vertex="1">
+                    <mxGeometry x="440" y="436" width="255" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="to3" value="Calendar invite / self-serve reschedule link (re-picks a live open slot, re-issues work order)." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#eafaea;strokeColor=#82b366;fontSize=11;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;" parent="1" vertex="1">
+                    <mxGeometry x="700" y="436" width="255" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="to4" value="Reminder 12h before (time + location). Confirmed throughout — no &quot;do NOT go&quot; warning needed." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#eafaea;strokeColor=#82b366;fontSize=11;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;" parent="1" vertex="1">
+                    <mxGeometry x="960" y="436" width="255" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="bk1" value="Eligibility Gate; query center's real-time availability (API / scheduling integration); render only bookable slots." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=10;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;" parent="1" vertex="1">
+                    <mxGeometry x="180" y="536" width="255" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="bk2" value="Slot reserved in center's system + Work Order issued in Intoxalock&#39;s system of record — atomically — THEN &quot;confirmed.&quot; No ladder, no human." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=10;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;" parent="1" vertex="1">
+                    <mxGeometry x="440" y="536" width="255" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="bk3" value="Booking stays in sync both ways; reschedule/cancel releases the slot and reissues the work order." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=10;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;" parent="1" vertex="1">
+                    <mxGeometry x="700" y="536" width="255" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="bk4" value="Reminder scheduled from the confirmed appointment time; work order already valid at the center." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=10;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;" parent="1" vertex="1">
+                    <mxGeometry x="960" y="536" width="255" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="painNote" value="What changes vs. the v1 journey: real-time availability removes the WAITING stage entirely. There is no request-vs-appointment gap, no Confirmation Ladder, no keep-warm 24h reminders, and no human coordination on the happy path — the booking IS the confirmation. Prerequisite (and the reason this is the IDEAL, not v1): the independent centers must expose a real scheduling API / live availability, which the Problem Definition notes they do not have today." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff8e6;strokeColor=#d6b656;fontSize=10;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=10;" parent="1" vertex="1">
+                    <mxGeometry x="20" y="640" width="1195" height="60" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

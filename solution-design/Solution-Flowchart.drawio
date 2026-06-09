@@ -1,0 +1,137 @@
+<mxfile host="65bd71144e">
+    <diagram name="Removal Scheduling - Solution Flow" id="sol-flow-1">
+        <mxGraphModel dx="1356" dy="1270" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1240" pageHeight="1340" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="band1" value="PHASE 1 · INTAKE" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#eef3fb;strokeColor=none;verticalAlign=top;align=left;fontStyle=1;fontSize=13;fontColor=#3b5b8c;spacingLeft=14;spacingTop=8;" parent="1" vertex="1">
+                    <mxGeometry y="70" width="1240" height="440" as="geometry"/>
+                </mxCell>
+                <mxCell id="band2" value="PHASE 2 · CONFIRMATION" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#eaf6ea;strokeColor=none;verticalAlign=top;align=left;fontStyle=1;fontSize=13;fontColor=#2e7d32;spacingLeft=14;spacingTop=8;" parent="1" vertex="1">
+                    <mxGeometry y="510" width="1240" height="560" as="geometry"/>
+                </mxCell>
+                <mxCell id="band3" value="PHASE 3 · AS THE DATE APPROACHES" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0f0f0;strokeColor=none;verticalAlign=top;align=left;fontStyle=1;fontSize=13;fontColor=#555555;spacingLeft=14;spacingTop=8;" parent="1" vertex="1">
+                    <mxGeometry y="1070" width="1240" height="250" as="geometry"/>
+                </mxCell>
+                <mxCell id="title" value="Intoxalock Device Removal — Solution Flow (simplified)" style="text;html=1;fontSize=17;fontStyle=1;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="20" width="1120" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="RAIL" value="🎧 ESCALATE TO INTOXALOCK REPRESENTATIVE&#xa;&#xa;Receives the full interaction history and works the case with reminders until it is resolved.&#xa;&#xa;Also handles ALL ineligible / paperwork cases and any stalled request — nothing is silently dropped." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontColor=#8a5a00;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingTop=10;spacingRight=10;arcSize=6;" parent="1" vertex="1">
+                    <mxGeometry x="1350" y="530" width="250" height="210" as="geometry"/>
+                </mxCell>
+                <mxCell id="N1" value="👤 Customer submits a request&#xa;(App · inbound SMS · AI Voice call)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;arcSize=40;" parent="1" vertex="1">
+                    <mxGeometry x="300" y="90" width="300" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="N2" value="Create ONE Removal Request&#xa;(same flow for every channel)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="300" y="180" width="300" height="46" as="geometry"/>
+                </mxCell>
+                <mxCell id="D1" value="Eligible?&#xa;past lock period AND&#xa;no state paperwork" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="335" y="250" width="230" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="N3" value="Validate times vs Operating Hours ·&#xa;enforce Minimum Lead Time" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="300" y="390" width="300" height="46" as="geometry"/>
+                </mxCell>
+                <mxCell id="N4" value="📩 Notify customer:&#xa;&quot;Request received — NOT a confirmed appointment&quot;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#eef3fb;strokeColor=#6c8ebf;dashed=1;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="290" y="458" width="320" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="N5" value="📤 Send Confirmation Page link to the Service Center&#xa;(SMS + email · signed, data-minimized)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="290" y="560" width="320" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="D2" value="Does the center confirm a time?&#xa;(page → follow-up → AI voice call,&#xa;lead-time-aware ladder)" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="310" y="650" width="280" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="DB1" value="Center declines &amp; offers&#xa;held new times → send link&#xa;to customer to accept" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff6e9;strokeColor=#d79b00;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="630" y="630" width="440" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="DB2" value="Customer accepts&#xa;in time?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="685" y="800" width="160" height="84" as="geometry"/>
+                </mxCell>
+                <mxCell id="N7" value="⚙ Generate Work Order automatically&#xa;(in Intoxalock system of record)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="300" y="820" width="300" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="D3" value="Work Order issued?&#xa;(the gate)" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="345" y="890" width="210" height="96" as="geometry"/>
+                </mxCell>
+                <mxCell id="N8" value="✅ Notify customer SMS - email: CONFIRMED&lt;br&gt;date · time · center location&lt;br&gt;(quote surfaced to representative only)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#2e5a2e;fontSize=12;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="285" y="1014" width="330" height="56" as="geometry"/>
+                </mxCell>
+                <mxCell id="D4" value="Confirmed by the&#xa;requested date?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="345" y="1100" width="210" height="92" as="geometry"/>
+                </mxCell>
+                <mxCell id="N9" value="🔔 Reminder 12h before&#xa;(time + center location)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#2e5a2e;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="110" y="1240" width="300" height="56" as="geometry"/>
+                </mxCell>
+                <mxCell id="N10" value="⛔ Warning: you do NOT have a confirmed appointment — do not go to the center&#xa;(anchored to the requested date)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffd6d6;strokeColor=#b85450;fontColor=#7a2e2e;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="560" y="1240" width="400" height="56" as="geometry"/>
+                </mxCell>
+                <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;fontSize=11;" parent="1" source="N1" target="N2" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;fontSize=11;" parent="1" source="N2" target="D1" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e3" value="Yes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;fontSize=11;strokeColor=#2e7d32;fontColor=#2e7d32;labelBackgroundColor=#ffffff;" parent="1" source="D1" target="N3" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e4" value="No / paperwork" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;dashed=1;fontSize=11;strokeColor=#d79b00;fontColor=#a9761a;labelBackgroundColor=#ffffff;" parent="1" source="D1" target="RAIL" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;fontSize=11;" parent="1" source="N3" target="N4" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;fontSize=11;" parent="1" source="N4" target="N5" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;fontSize=11;" parent="1" source="N5" target="D2" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e8" value="Confirms time" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;fontSize=11;strokeColor=#2e7d32;fontColor=#2e7d32;labelBackgroundColor=#ffffff;" parent="1" source="D2" target="N7" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e9" value="No answer (after ladder)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;dashed=1;fontSize=11;strokeColor=#d79b00;fontColor=#a9761a;labelBackgroundColor=#ffffff;" parent="1" source="D2" target="RAIL" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="970" y="710"/>
+                            <mxPoint x="970" y="730"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e10" value="Declines + new times" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;fontSize=11;strokeColor=#d79b00;fontColor=#a9761a;labelBackgroundColor=#ffffff;" parent="1" source="D2" target="DB1" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;fontSize=11;" parent="1" source="DB1" target="DB2" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e12" value="Accepts" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;fontSize=11;strokeColor=#2e7d32;fontColor=#2e7d32;labelBackgroundColor=#ffffff;" parent="1" source="DB2" target="N7" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e13" value="Silent / declines" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;dashed=1;fontSize=11;strokeColor=#d79b00;fontColor=#a9761a;labelBackgroundColor=#ffffff;" parent="1" source="DB2" target="RAIL" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;fontSize=11;" parent="1" source="N7" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="450" y="890" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e15" value="Issued ✓" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;fontSize=11;strokeColor=#2e7d32;fontColor=#2e7d32;labelBackgroundColor=#ffffff;" parent="1" source="D3" target="N8" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e16" value="Failed" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;dashed=1;fontSize=11;strokeColor=#d79b00;fontColor=#a9761a;labelBackgroundColor=#ffffff;" parent="1" source="D3" target="RAIL" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;fontSize=11;" parent="1" source="N8" target="D4" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e18" value="Yes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;fontSize=11;strokeColor=#2e7d32;fontColor=#2e7d32;labelBackgroundColor=#ffffff;" parent="1" source="D4" target="N9" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e19" value="No" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;fontSize=11;strokeColor=#b85450;fontColor=#b85450;labelBackgroundColor=#ffffff;" parent="1" source="D4" target="N10" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="legBox" value="Legend:  green = happy path / confirmed   ·   orange = exception → human   ·   red = warning   ·   ◇ = decision" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fbfbfb;strokeColor=#cccccc;fontSize=11;align=left;verticalAlign=middle;spacingLeft=10;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="1300" width="900" height="28" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
