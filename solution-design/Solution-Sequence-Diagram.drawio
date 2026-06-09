@@ -1,218 +1,256 @@
 <mxfile host="65bd71144e">
     <diagram name="Removal Scheduling - Solution Sequence" id="sol-seq-1">
-        <mxGraphModel dx="1507" dy="1411" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="1130" math="0" shadow="0">
+        <mxGraphModel dx="3060" dy="2968" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1540" pageHeight="1380" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
-                <mxCell id="band1" value="PHASE 1 · REQUEST INTAKE — eligibility-gated, one canonical request from app / SMS / AI voice" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#eef3fb;strokeColor=none;verticalAlign=top;align=left;fontStyle=1;fontSize=12;fontColor=#3b5b8c;spacingLeft=14;spacingTop=6;" parent="1" vertex="1">
-                    <mxGeometry x="30" y="150" width="1340" height="220" as="geometry"/>
-                </mxCell>
-                <mxCell id="band2" value="PHASE 2 · AUTOMATED CONFIRMATION — orchestrated by the Automation System; humans handle exceptions only" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#eaf6ea;strokeColor=none;verticalAlign=top;align=left;fontStyle=1;fontSize=12;fontColor=#2e7d32;spacingLeft=14;spacingTop=6;" parent="1" vertex="1">
-                    <mxGeometry x="30" y="370" width="1340" height="470" as="geometry"/>
-                </mxCell>
-                <mxCell id="band3" value="PHASE 3 · AS THE DATE APPROACHES" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0f0f0;strokeColor=none;verticalAlign=top;align=left;fontStyle=1;fontSize=12;fontColor=#555555;spacingLeft=14;spacingTop=6;" parent="1" vertex="1">
-                    <mxGeometry x="30" y="840" width="1340" height="130" as="geometry"/>
-                </mxCell>
-                <mxCell id="ladderFrame" value="Confirmation Ladder — enforced &amp; lead-time-aware: follow-up → AI voice → human, finishing BEFORE the requested slot (no &quot;one-and-done&quot;)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#82b366;dashed=1;verticalAlign=top;align=left;fontSize=10;fontStyle=2;fontColor=#2e7d32;spacingLeft=8;spacingTop=2;" parent="1" vertex="1">
-                    <mxGeometry x="466" y="392" width="370" height="135" as="geometry"/>
-                </mxCell>
-                <mxCell id="declineSep" value="── DECLINE / NO-ANSWER BRANCH — center proposes held alternative times (TTL) ──" style="text;html=1;fontSize=11;fontStyle=2;fontColor=#888888;align=center;labelBackgroundColor=#eaf6ea;" parent="1" vertex="1">
-                    <mxGeometry x="300" y="678" width="600" height="20" as="geometry"/>
-                </mxCell>
-                <mxCell id="L1" value="👤&#xa;Customer" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;collapsible=0;recursiveResize=0;outlineConnect=0;size=80;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1;verticalAlign=top;spacingTop=8;" parent="1" vertex="1">
-                    <mxGeometry x="40" y="70" width="150" height="900" as="geometry"/>
-                </mxCell>
-                <mxCell id="L2" value="📱&#xa;Intake Channels&#xa;(App / SMS / AI Voice)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;collapsible=0;recursiveResize=0;outlineConnect=0;size=80;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;fontStyle=1;verticalAlign=top;spacingTop=8;" parent="1" vertex="1">
-                    <mxGeometry x="235" y="70" width="170" height="900" as="geometry"/>
-                </mxCell>
-                <mxCell id="L3" value="🤖&#xa;Automation System&#xa;(orchestrator)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;collapsible=0;recursiveResize=0;outlineConnect=0;size=80;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1;verticalAlign=top;spacingTop=8;" parent="1" vertex="1">
-                    <mxGeometry x="460" y="70" width="180" height="900" as="geometry"/>
-                </mxCell>
-                <mxCell id="L4" value="🔧&#xa;Service Center&#xa;(independent provider)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;collapsible=0;recursiveResize=0;outlineConnect=0;size=80;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;fontStyle=1;verticalAlign=top;spacingTop=8;" parent="1" vertex="1">
-                    <mxGeometry x="720" y="70" width="160" height="900" as="geometry"/>
-                </mxCell>
-                <mxCell id="L5" value="💾&#xa;Intoxalock System&#xa;of Record (Work Orders)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;collapsible=0;recursiveResize=0;outlineConnect=0;size=80;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;fontStyle=1;verticalAlign=top;spacingTop=8;" parent="1" vertex="1">
-                    <mxGeometry x="945" y="70" width="170" height="900" as="geometry"/>
-                </mxCell>
-                <mxCell id="L6" value="🎧&#xa;Intoxalock&#xa;Representative&#xa;(exceptions only)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;collapsible=0;recursiveResize=0;outlineConnect=0;size=80;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1;verticalAlign=top;spacingTop=8;" parent="1" vertex="1">
-                    <mxGeometry x="1180" y="70" width="150" height="900" as="geometry"/>
-                </mxCell>
-                <mxCell id="actIntake" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
-                    <mxGeometry x="314" y="170" width="12" height="55" as="geometry"/>
-                </mxCell>
-                <mxCell id="actAuto" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
-                    <mxGeometry x="544" y="200" width="12" height="620" as="geometry"/>
-                </mxCell>
-                <mxCell id="actSC1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
-                    <mxGeometry x="794" y="398" width="12" height="128" as="geometry"/>
-                </mxCell>
-                <mxCell id="actSC2" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
-                    <mxGeometry x="794" y="700" width="12" height="22" as="geometry"/>
-                </mxCell>
-                <mxCell id="actSoR" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
-                    <mxGeometry x="1024" y="545" width="12" height="48" as="geometry"/>
-                </mxCell>
-                <mxCell id="actRep1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
-                    <mxGeometry x="1249" y="272" width="12" height="22" as="geometry"/>
-                </mxCell>
-                <mxCell id="actRep2" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
-                    <mxGeometry x="1249" y="798" width="12" height="22" as="geometry"/>
-                </mxCell>
-                <mxCell id="m1" value="1 · Submit removal request" style="html=1;rounded=0;endArrow=block;startArrow=none;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1">
-                    <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="115" y="175" as="sourcePoint"/>
-                        <mxPoint x="314" y="175" as="targetPoint"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="m2" value="2 · Create canonical Removal Request" style="html=1;rounded=0;endArrow=block;startArrow=none;fontSize=12;labelBackgroundColor=#ffffff;" parent="1" edge="1">
-                    <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="326" y="210" as="sourcePoint"/>
-                        <mxPoint x="544" y="210" as="targetPoint"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="m3" value="3 · Eligibility Gate — past lock period &amp; no state paperwork?" style="html=1;rounded=1;endArrow=block;startArrow=none;fontSize=11;labelBackgroundColor=#ffffff;exitX=1;exitY=0.02;exitDx=0;exitDy=0;entryX=1;entryY=0.06;entryDx=0;entryDy=0;" parent="1" source="actAuto" target="actAuto" edge="1">
-                    <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="560" y="240" as="sourcePoint"/>
-                        <mxPoint x="700" y="240" as="targetPoint"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="m3a" value="3a · Ineligible / paperwork → route to human (tracked, reminders)" style="html=1;rounded=0;endArrow=block;startArrow=none;dashed=1;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#d79b00;fontColor=#a9761a;" parent="1" edge="1">
-                    <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="556" y="282" as="sourcePoint"/>
-                        <mxPoint x="1249" y="282" as="targetPoint"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="m4" value="4 · Validate ranges vs Operating Hours · enforce Min Lead Time" style="html=1;rounded=1;endArrow=block;startArrow=none;fontSize=11;labelBackgroundColor=#ffffff;exitX=1;exitY=0.18;exitDx=0;exitDy=0;entryX=1;entryY=0.22;entryDx=0;entryDy=0;" parent="1" source="actAuto" target="actAuto" edge="1">
-                    <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="560" y="315" as="sourcePoint"/>
-                        <mxPoint x="700" y="315" as="targetPoint"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="m5" value="5 · Acknowledgment: &quot;Request received — NOT a confirmed appointment&quot; (consented channel)" style="html=1;rounded=0;endArrow=open;startArrow=none;dashed=1;fontSize=11;labelBackgroundColor=#ffffff;" parent="1" edge="1">
-                    <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="544" y="350" as="sourcePoint"/>
-                        <mxPoint x="115" y="350" as="targetPoint"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="m6" value="6 · SMS + email link to Confirmation Page (signed, data-minimized)" style="html=1;rounded=0;endArrow=block;startArrow=none;fontSize=11;labelBackgroundColor=#ffffff;" parent="1" edge="1">
-                    <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="556" y="408" as="sourcePoint"/>
-                        <mxPoint x="794" y="408" as="targetPoint"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="m7" value="7 · Follow-up (no action)" style="html=1;rounded=0;endArrow=open;startArrow=none;dashed=1;fontSize=11;labelBackgroundColor=#ffffff;" parent="1" edge="1">
-                    <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="556" y="445" as="sourcePoint"/>
-                        <mxPoint x="794" y="445" as="targetPoint"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="m8" value="8 · AI Voice Agent call — fallback (branded ID · AI-disclosure)" style="html=1;rounded=0;endArrow=block;startArrow=none;fontSize=11;labelBackgroundColor=#ffffff;" parent="1" edge="1">
-                    <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="556" y="482" as="sourcePoint"/>
-                        <mxPoint x="794" y="482" as="targetPoint"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="m9" value="9 · Confirm exact hour in range + quote + observations" style="html=1;rounded=0;endArrow=block;startArrow=none;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#2e7d32;fontColor=#2e7d32;" parent="1" edge="1">
-                    <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="794" y="517" as="sourcePoint"/>
-                        <mxPoint x="556" y="517" as="targetPoint"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="m10" value="10 · Generate Work Order (automatic)" style="html=1;rounded=0;endArrow=block;startArrow=none;fontSize=11;labelBackgroundColor=#ffffff;" parent="1" edge="1">
-                    <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="556" y="550" as="sourcePoint"/>
-                        <mxPoint x="1024" y="550" as="targetPoint"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="m11" value="11 · Work Order issued ✓ (gate — if it fails, escalate; do NOT say confirmed)" style="html=1;rounded=0;endArrow=open;startArrow=none;dashed=1;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#2e7d32;fontColor=#2e7d32;" parent="1" edge="1">
-                    <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="1024" y="585" as="sourcePoint"/>
-                        <mxPoint x="556" y="585" as="targetPoint"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="m12" value="12 · Surface quote to representative (rep-only, not shown to customer)" style="html=1;rounded=0;endArrow=open;startArrow=none;dashed=1;fontSize=11;labelBackgroundColor=#ffffff;" parent="1" edge="1">
-                    <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="556" y="620" as="sourcePoint"/>
-                        <mxPoint x="1249" y="620" as="targetPoint"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="m13" value="13 · CONFIRMED: date · time · center location" style="html=1;rounded=0;endArrow=block;startArrow=none;fontSize=12;fontStyle=1;labelBackgroundColor=#ffffff;strokeColor=#2e7d32;fontColor=#2e7d32;" parent="1" edge="1">
-                    <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="544" y="655" as="sourcePoint"/>
-                        <mxPoint x="115" y="655" as="targetPoint"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="m14" value="14 · Decline + held alternative times (TTL)" style="html=1;rounded=0;endArrow=open;startArrow=none;dashed=1;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#d79b00;fontColor=#a9761a;" parent="1" edge="1">
-                    <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="794" y="712" as="sourcePoint"/>
-                        <mxPoint x="556" y="712" as="targetPoint"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="m15" value="15 · Link to accept the new schedule" style="html=1;rounded=0;endArrow=block;startArrow=none;fontSize=11;labelBackgroundColor=#ffffff;" parent="1" edge="1">
-                    <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="544" y="742" as="sourcePoint"/>
-                        <mxPoint x="115" y="742" as="targetPoint"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="m16" value="16 · Accept new time = Confirmed (no return trip to center) → back to step 10" style="html=1;rounded=0;endArrow=block;startArrow=none;fontSize=11;labelBackgroundColor=#ffffff;" parent="1" edge="1">
-                    <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="115" y="772" as="sourcePoint"/>
-                        <mxPoint x="544" y="772" as="targetPoint"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="m17" value="17 · Customer silent / declines, OR work-order failed → escalate w/ full history; reminders until resolved" style="html=1;rounded=0;endArrow=block;startArrow=none;dashed=1;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#d79b00;fontColor=#a9761a;" parent="1" edge="1">
-                    <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="556" y="805" as="sourcePoint"/>
-                        <mxPoint x="1249" y="805" as="targetPoint"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="m18" value="18 · CONFIRMED → reminder 12h before (time + center location)" style="html=1;rounded=0;endArrow=block;startArrow=none;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#2e7d32;fontColor=#2e7d32;" parent="1" edge="1">
-                    <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="544" y="878" as="sourcePoint"/>
-                        <mxPoint x="115" y="878" as="targetPoint"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="m19" value="19 · STILL UNCONFIRMED → &quot;You do NOT have a confirmed appointment — do not go&quot; (anchored to requested date)" style="html=1;rounded=0;endArrow=open;startArrow=none;dashed=1;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#b85450;fontColor=#b85450;" parent="1" edge="1">
-                    <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="544" y="912" as="sourcePoint"/>
-                        <mxPoint x="115" y="912" as="targetPoint"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="GN1" value="✓ FIXED — Eligibility Gate routes paperwork / ineligible cases to a human BEFORE automation, and keeps tracking them with reminders so they can't silently stall." style="shape=note;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#2e5a2e;fontSize=11;align=left;verticalAlign=top;spacingLeft=8;spacingRight=8;spacingTop=6;size=14;" parent="1" vertex="1">
-                    <mxGeometry x="900" y="178" width="300" height="86" as="geometry"/>
-                </mxCell>
-                <mxCell id="GN2" value="✓ FIXED — Work Order is issued in the system of record BEFORE the customer is told &quot;confirmed.&quot; No work order → not confirmed → never turned away at the shop." style="shape=note;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#2e5a2e;fontSize=11;fontStyle=1;align=left;verticalAlign=top;spacingLeft=8;spacingRight=8;spacingTop=6;size=14;" parent="1" vertex="1">
-                    <mxGeometry x="660" y="600" width="250" height="92" as="geometry"/>
-                </mxCell>
-                <mxCell id="GN3" value="✓ FIXED — Every branch terminates in a Confirmed Appointment or a human handoff. Center silence AND customer silence both have bounded timeouts." style="shape=note;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#2e5a2e;fontSize=11;align=left;verticalAlign=top;spacingLeft=8;spacingRight=8;spacingTop=6;size=14;" parent="1" vertex="1">
-                    <mxGeometry x="1000" y="700" width="320" height="86" as="geometry"/>
-                </mxCell>
-                <mxCell id="title" value="Intoxalock Device Removal — Proposed solution: how a request becomes a reliably-confirmed appointment" style="text;html=1;fontSize=16;fontStyle=1;align=center;" parent="1" vertex="1">
+                <mxCell id="title" value="Intoxalock Device Removal — Proposed solution" style="text;html=1;fontSize=16;fontStyle=1;align=center;" parent="1" vertex="1">
                     <mxGeometry x="60" y="14" width="1280" height="26" as="geometry"/>
                 </mxCell>
-                <mxCell id="legBox" value="How to read this diagram" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fbfbfb;strokeColor=#cccccc;verticalAlign=top;align=left;fontStyle=1;fontSize=11;spacingLeft=10;spacingTop=6;" parent="1" vertex="1">
-                    <mxGeometry x="30" y="995" width="640" height="120" as="geometry"/>
+                <mxCell id="band1" value="PHASE 1 · REQUEST INTAKE" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#eef3fb;strokeColor=none;verticalAlign=top;align=left;fontStyle=1;fontSize=12;fontColor=#3b5b8c;spacingLeft=14;spacingTop=8;" parent="1" vertex="1">
+                    <mxGeometry x="30" y="150" width="1140" height="290" as="geometry"/>
                 </mxCell>
-                <mxCell id="legA" value="──▶  solid arrow = action / request" style="text;html=1;fontSize=10;align=left;" parent="1" vertex="1">
-                    <mxGeometry x="48" y="1025" width="280" height="20" as="geometry"/>
+                <mxCell id="band2" value="PHASE 2 · AUTOMATED CONFIRMATION" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#eaf6ea;strokeColor=none;verticalAlign=top;align=left;fontStyle=1;fontSize=12;fontColor=#2e7d32;spacingLeft=14;spacingTop=8;" parent="1" vertex="1">
+                    <mxGeometry x="30" y="440" width="1140" height="580" as="geometry"/>
                 </mxCell>
-                <mxCell id="legB" value="┄┄▷  dashed arrow = response / notification" style="text;html=1;fontSize=10;align=left;" parent="1" vertex="1">
-                    <mxGeometry x="48" y="1047" width="280" height="20" as="geometry"/>
+                <mxCell id="band3" value="PHASE 3 · AS THE DATE APPROACHES" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0f0f0;strokeColor=none;verticalAlign=top;align=left;fontStyle=1;fontSize=12;fontColor=#555555;spacingLeft=14;spacingTop=8;" parent="1" vertex="1">
+                    <mxGeometry x="30" y="1020" width="1140" height="150" as="geometry"/>
                 </mxCell>
-                <mxCell id="legC" value="green dashed frame = enforced retry/escalation loop" style="text;html=1;fontSize=10;align=left;fontColor=#2e7d32;" parent="1" vertex="1">
-                    <mxGeometry x="48" y="1069" width="320" height="20" as="geometry"/>
+                <mxCell id="band2Decline" value="Service Center declines&amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fbe6d4;strokeColor=#d79b00;dashed=1;verticalAlign=top;align=left;fontStyle=1;fontSize=11;fontColor=#a9761a;spacingLeft=14;spacingTop=6;" vertex="1" parent="1">
+                    <mxGeometry x="70" y="850" width="1030" height="166" as="geometry"/>
                 </mxCell>
-                <mxCell id="legD" value="green arrows / 🗒 = the happy path &amp; what this fixes" style="text;html=1;fontSize=10;align=left;fontColor=#2e7d32;" parent="1" vertex="1">
-                    <mxGeometry x="360" y="1025" width="300" height="20" as="geometry"/>
+                <mxCell id="annCol" value="WHAT THIS FIXES vs. TODAY" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5fbf4;strokeColor=#cbe3c6;verticalAlign=top;align=center;fontStyle=1;fontSize=12;fontColor=#2e7d32;spacingTop=8;dashed=1;" parent="1" vertex="1">
+                    <mxGeometry x="1200" y="150" width="280" height="870" as="geometry"/>
                 </mxCell>
-                <mxCell id="legE" value="orange = decline / no-answer branch" style="text;html=1;fontSize=10;align=left;fontColor=#a9761a;" parent="1" vertex="1">
-                    <mxGeometry x="360" y="1047" width="300" height="20" as="geometry"/>
+                <mxCell id="ladderFrame" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#82b366;dashed=1;verticalAlign=top;align=left;fontSize=10;fontStyle=2;fontColor=#2e7d32;spacingLeft=8;spacingTop=4;" parent="1" vertex="1">
+                    <mxGeometry x="455" y="500" width="415" height="135" as="geometry"/>
                 </mxCell>
-                <mxCell id="legF" value="▮ vertical bar = participant is actively busy" style="text;html=1;fontSize=10;align=left;" parent="1" vertex="1">
-                    <mxGeometry x="360" y="1069" width="300" height="20" as="geometry"/>
+                <mxCell id="L1" value="👤&#xa;Customer" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;collapsible=0;recursiveResize=0;outlineConnect=0;size=80;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1;verticalAlign=top;spacingTop=8;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="70" width="150" height="1100" as="geometry"/>
                 </mxCell>
-                <mxCell id="changedBox" value="WHAT CHANGED vs. TODAY&#10;• Automation System orchestrates intake → confirmation → notification; the representative handles exceptions only.&#10;• Eligibility-gated: only the no-paperwork cohort is automated; the rest is routed to a human and tracked.&#10;• Web-form-first confirmation (signed, data-minimized page); AI voice is the fallback rung, not the first move.&#10;• Confirmation Ladder is enforced &amp; lead-time-aware — no &quot;one-and-done,&quot; never runs past the requested slot.&#10;• A Work Order is issued before any &quot;confirmed&quot; message — closes the &quot;turned away with no work order&quot; failure.&#10;• Per-channel consent + AI-disclosure on every outbound message (TCPA); &quot;confirmed&quot; reserved for real appointments.&#10;• Unconfirmed customers are proactively warned not to show up." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#2e5a2e;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingTop=8;spacingRight=8;arcSize=4;" parent="1" vertex="1">
-                    <mxGeometry x="690" y="995" width="680" height="120" as="geometry"/>
+                <mxCell id="L2" value="📱&lt;br&gt;Intake Channels&lt;br&gt;(App / SMS / Call -AI Voice)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;collapsible=0;recursiveResize=0;outlineConnect=0;size=80;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;fontStyle=1;verticalAlign=top;spacingTop=8;" parent="1" vertex="1">
+                    <mxGeometry x="240" y="70" width="170" height="1100" as="geometry"/>
+                </mxCell>
+                <mxCell id="L3" value="🤖&lt;br&gt;Automation System&lt;div&gt;&lt;br/&gt;&lt;/div&gt;" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;collapsible=0;recursiveResize=0;outlineConnect=0;size=80;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1;verticalAlign=top;spacingTop=8;" parent="1" vertex="1">
+                    <mxGeometry x="470" y="70" width="200" height="1100" as="geometry"/>
+                </mxCell>
+                <mxCell id="L4" value="🔧&#xa;Service Center&#xa;(independent provider)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;collapsible=0;recursiveResize=0;outlineConnect=0;size=80;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;fontStyle=1;verticalAlign=top;spacingTop=8;" parent="1" vertex="1">
+                    <mxGeometry x="760" y="70" width="160" height="1100" as="geometry"/>
+                </mxCell>
+                <mxCell id="L5" value="🎧&#xa;Intoxalock&#xa;Representative&#xa;(exceptions only)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;collapsible=0;recursiveResize=0;outlineConnect=0;size=80;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1;verticalAlign=top;spacingTop=8;" parent="1" vertex="1">
+                    <mxGeometry x="1010" y="70" width="160" height="1100" as="geometry"/>
+                </mxCell>
+                <mxCell id="actIntake" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+                    <mxGeometry x="319" y="205" width="12" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="actAuto" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+                    <mxGeometry x="564" y="245" width="12" height="755" as="geometry"/>
+                </mxCell>
+                <mxCell id="actSC1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+                    <mxGeometry x="834" y="510" width="12" height="155" as="geometry"/>
+                </mxCell>
+                <mxCell id="actSC2" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+                    <mxGeometry x="834" y="880" width="12" height="25" as="geometry"/>
+                </mxCell>
+                <mxCell id="actRep1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+                    <mxGeometry x="1084" y="320" width="12" height="25" as="geometry"/>
+                </mxCell>
+                <mxCell id="actRep2" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+                    <mxGeometry x="1084" y="985" width="12" height="25" as="geometry"/>
+                </mxCell>
+                <mxCell id="m1" value="1 · Submit removal request" style="html=1;rounded=0;endArrow=block;startArrow=none;fontSize=12;labelBackgroundColor=#eef3fb;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="115" y="210" as="sourcePoint"/>
+                        <mxPoint x="319" y="210" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="m2" value="2 · Send Removal Request" style="html=1;rounded=0;endArrow=block;startArrow=none;fontSize=12;labelBackgroundColor=#eef3fb;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="331" y="250" as="sourcePoint"/>
+                        <mxPoint x="564" y="250" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="m3a" value="3a · Ineligible / paperwork → route to human (tracked, reminders) (?)" style="html=1;rounded=0;endArrow=block;startArrow=none;dashed=1;fontSize=11;labelBackgroundColor=#eef3fb;strokeColor=#d79b00;fontColor=#a9761a;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="576" y="330" as="sourcePoint"/>
+                        <mxPoint x="1084" y="330" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="m3" value="3 · Eligibility Gate — past lock period · no state paperwork?" style="html=1;rounded=1;endArrow=block;startArrow=none;fontSize=11;labelBackgroundColor=#eef3fb;exitX=1;exitY=0.05;exitDx=0;exitDy=0;entryX=1;entryY=0.09;entryDx=0;entryDy=0;" parent="1" source="actAuto" target="actAuto" edge="1">
+                    <mxGeometry x="-0.0065" relative="1" as="geometry">
+                        <mxPoint x="576" y="290" as="sourcePoint"/>
+                        <mxPoint x="720" y="290" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="610" y="290"/>
+                        </Array>
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="m4" value="4 · Validate ranges vs Operating Hours DB · enforce Min Lead Time" style="html=1;rounded=1;endArrow=block;startArrow=none;fontSize=11;labelBackgroundColor=#eef3fb;exitX=1;exitY=0.15;exitDx=0;exitDy=0;entryX=1;entryY=0.19;entryDx=0;entryDy=0;" parent="1" source="actAuto" target="actAuto" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="576" y="370" as="sourcePoint"/>
+                        <mxPoint x="720" y="370" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="610" y="370"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="m5" value="5 · Acknowledgment (SMS + email)&amp;nbsp;" style="html=1;rounded=0;endArrow=open;startArrow=none;dashed=1;fontSize=11;labelBackgroundColor=#eef3fb;" parent="1" edge="1">
+                    <mxGeometry x="-0.0002" relative="1" as="geometry">
+                        <mxPoint x="564" y="410" as="sourcePoint"/>
+                        <mxPoint x="115" y="410" as="targetPoint"/>
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="mKW" value="↺ status notification every ~24h — &quot;still being worked, not yet confirmed&quot;" style="html=1;rounded=0;endArrow=open;startArrow=none;dashed=1;fontSize=11;labelBackgroundColor=#eaf6ea;strokeColor=#3b5b8c;fontColor=#3b5b8c;" parent="1" edge="1">
+                    <mxGeometry x="-0.0007" relative="1" as="geometry">
+                        <mxPoint x="564" y="487" as="sourcePoint"/>
+                        <mxPoint x="115" y="487" as="targetPoint"/>
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="m6" value="6 · SMS + email link to Confirmation&amp;nbsp;" style="html=1;rounded=0;endArrow=block;startArrow=none;fontSize=11;labelBackgroundColor=#eaf6ea;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="576" y="525" as="sourcePoint"/>
+                        <mxPoint x="834" y="525" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="m7" value="7 · Follow-up SMS + email&amp;nbsp;" style="html=1;rounded=0;endArrow=open;startArrow=none;dashed=1;fontSize=11;labelBackgroundColor=#eaf6ea;" parent="1" edge="1">
+                    <mxGeometry x="0.0026" relative="1" as="geometry">
+                        <mxPoint x="576" y="565" as="sourcePoint"/>
+                        <mxPoint x="834" y="565" as="targetPoint"/>
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="m8" value="8 · AI Voice Agent call&amp;nbsp;" style="html=1;rounded=0;endArrow=block;startArrow=none;fontSize=11;labelBackgroundColor=#eaf6ea;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="576" y="605" as="sourcePoint"/>
+                        <mxPoint x="834" y="605" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="m9" value="9 · Confirm time + quote" style="html=1;rounded=0;endArrow=block;startArrow=none;fontSize=11;labelBackgroundColor=#eaf6ea;strokeColor=#2e7d32;fontColor=#2e7d32;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="834" y="660" as="sourcePoint"/>
+                        <mxPoint x="576" y="660" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="m10" value="10 · Generate Work Order (internal — system of record)" style="html=1;rounded=1;endArrow=block;startArrow=none;fontSize=11;labelBackgroundColor=#eaf6ea;strokeColor=#9673a6;fontColor=#6a4f86;exitX=0.818;exitY=0.579;exitDx=0;exitDy=0;entryX=0.818;entryY=0.627;entryDx=0;entryDy=0;entryPerimeter=0;exitPerimeter=0;" parent="1" source="actAuto" target="actAuto" edge="1">
+                    <mxGeometry x="0.0313" y="9" relative="1" as="geometry">
+                        <mxPoint x="576" y="700" as="sourcePoint"/>
+                        <mxPoint x="720" y="700" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="610" y="690"/>
+                        </Array>
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="m11" value="11 · Work Order issued ✓ — if it fails, escalate to human" style="html=1;rounded=1;endArrow=block;startArrow=none;fontSize=11;labelBackgroundColor=#eaf6ea;strokeColor=#2e7d32;fontColor=#2e7d32;exitX=1;exitY=0.64;exitDx=0;exitDy=0;entryX=0.994;entryY=0.684;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="actAuto" target="actAuto" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="576" y="740" as="sourcePoint"/>
+                        <mxPoint x="576" y="751" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="620" y="740"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="m12" value="12 · Surface quote to representative ( UI&amp;nbsp; + email + zendes(?))" style="html=1;rounded=0;endArrow=open;startArrow=none;dashed=1;fontSize=11;labelBackgroundColor=#eaf6ea;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="576" y="780" as="sourcePoint"/>
+                        <mxPoint x="1084" y="780" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="m13" value="13 · Confirmed appoiment (SMS + email)" style="html=1;rounded=0;endArrow=block;startArrow=none;fontSize=12;fontStyle=1;labelBackgroundColor=#eaf6ea;strokeColor=#2e7d32;fontColor=#2e7d32;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="564" y="820" as="sourcePoint"/>
+                        <mxPoint x="115" y="820" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="m14" value="14 · Decline&amp;nbsp; + time alternatives (TTL)" style="html=1;rounded=0;endArrow=open;startArrow=none;dashed=1;fontSize=11;labelBackgroundColor=#fbe6d4;strokeColor=#d79b00;fontColor=#a9761a;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="834" y="890" as="sourcePoint"/>
+                        <mxPoint x="576" y="890" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="m15" value="15 · SMS + Email to accept the new schedule" style="html=1;rounded=0;endArrow=block;startArrow=none;fontSize=11;labelBackgroundColor=#fbe6d4;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="564" y="925" as="sourcePoint"/>
+                        <mxPoint x="115" y="925" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="m16" value="16 · Accept new time = Confirmed&amp;nbsp; → back to step 10" style="html=1;rounded=0;endArrow=block;startArrow=none;fontSize=11;labelBackgroundColor=#fbe6d4;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="115" y="960" as="sourcePoint"/>
+                        <mxPoint x="564" y="960" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="m17" value="17 · Customer silent / WO failed → escalate w/ history; remind until resolved" style="html=1;rounded=0;endArrow=block;startArrow=none;dashed=1;fontSize=11;labelBackgroundColor=#fbe6d4;strokeColor=#d79b00;fontColor=#a9761a;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="576" y="995" as="sourcePoint"/>
+                        <mxPoint x="1084" y="995" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="m18" value="18 · CONFIRMED → reminder 12h before (time + center location)" style="html=1;rounded=0;endArrow=block;startArrow=none;fontSize=11;labelBackgroundColor=#f0f0f0;strokeColor=#2e7d32;fontColor=#2e7d32;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="564" y="1080" as="sourcePoint"/>
+                        <mxPoint x="115" y="1080" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="m19" value="19 ·&amp;nbsp; UNCONFIRMED - reminde user not to go&amp;nbsp;" style="html=1;rounded=0;endArrow=open;startArrow=none;dashed=1;fontSize=11;labelBackgroundColor=#f0f0f0;strokeColor=#b85450;fontColor=#b85450;" parent="1" edge="1">
+                    <mxGeometry x="0.0009" relative="1" as="geometry">
+                        <mxPoint x="549" y="1120" as="sourcePoint"/>
+                        <mxPoint x="100" y="1120" as="targetPoint"/>
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="ohBox" value="🗂 OPERATING HOURS DB — built &amp; kept fresh in the background (not per request)&#xa;&#xa;🌐 Scrape public web / listings for each center&#39;s hours&#xa;✉ Email service centers asking them to confirm / provide their hours&#xa;↩ Replies &amp; scrapes update the DB · refreshed periodically&#xa;ⓘ Best-effort hint layer — constrains the slots a customer can pick (open ≠ available)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;fontColor=#3b5b8c;dashed=1;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;spacingTop=8;arcSize=6;shadow=1;" parent="1" vertex="1">
+                    <mxGeometry x="-20" y="-150" width="465" height="150" as="geometry"/>
+                </mxCell>
+                <mxCell id="ohFeed" value="feeds Step 4 validation" style="html=1;endArrow=block;startArrow=none;dashed=1;fontSize=10;fontColor=#3b5b8c;strokeColor=#6c8ebf;labelBackgroundColor=none;exitX=1.001;exitY=0.578;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="ohBox" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="570" y="70" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="470" y="-63"/>
+                            <mxPoint x="470" y="50"/>
+                            <mxPoint x="570" y="50"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="GN1" value="✓ FIXED — the Eligibility Gate routes paperwork / ineligible cases to a human BEFORE automation, and keeps tracking them with reminders so they can&#39;t silently stall." style="shape=note;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#2e5a2e;fontSize=11;align=left;verticalAlign=top;spacingLeft=8;spacingRight=8;spacingTop=6;size=14;" parent="1" vertex="1">
+                    <mxGeometry x="1215" y="280" width="250" height="105" as="geometry"/>
+                </mxCell>
+                <mxCell id="GN2" value="✓ FIXED — the Work Order now lives INSIDE the Automation System (the system of record) and is issued BEFORE the customer is told &quot;confirmed.&quot; No work order → not confirmed → never turned away at the shop." style="shape=note;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#2e5a2e;fontSize=11;fontStyle=1;align=left;verticalAlign=top;spacingLeft=8;spacingRight=8;spacingTop=6;size=14;" parent="1" vertex="1">
+                    <mxGeometry x="1215" y="665" width="250" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="GN3" value="✓ FIXED — every branch terminates in a Confirmed Appointment or a human handoff. Center silence AND customer silence both have bounded timeouts." style="shape=note;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#2e5a2e;fontSize=11;align=left;verticalAlign=top;spacingLeft=8;spacingRight=8;spacingTop=6;size=14;" parent="1" vertex="1">
+                    <mxGeometry x="1215" y="940" width="250" height="105" as="geometry"/>
+                </mxCell>
+                <mxCell id="lead1" style="html=1;endArrow=none;startArrow=none;dashed=1;strokeColor=#9bbf94;rounded=0;" parent="1" source="GN1" target="actRep1" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="lead2" style="html=1;endArrow=none;startArrow=none;dashed=1;strokeColor=#9673a6;rounded=0;" parent="1" source="GN2" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="582" y="720" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="lead3" style="html=1;endArrow=none;startArrow=none;dashed=1;strokeColor=#9bbf94;rounded=0;" parent="1" source="GN3" target="actRep2" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="changedBox" value="WHAT CHANGED vs. TODAY&#xa;• Automation System orchestrates intake → confirmation → notification AND owns the Work Order / system of record (one actor); the representative handles exceptions only.&#xa;• Eligibility-gated: only the no-paperwork cohort is automated; the rest is routed to a human and tracked.&#xa;• Web-form-first confirmation (signed, data-minimized page); AI voice is the fallback rung, not the first move.&#xa;• Confirmation Ladder is enforced &amp; lead-time-aware — no &quot;one-and-done,&quot; never runs past the requested slot.&#xa;• A Work Order is issued (internally) before any &quot;confirmed&quot; message — closes the &quot;turned away with no work order&quot; failure.&#xa;• Per-channel consent + AI-disclosure on every outbound message (TCPA); &quot;confirmed&quot; reserved for real appointments.&#xa;• Unconfirmed customers are proactively warned not to show up." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#2e5a2e;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingTop=8;spacingRight=8;arcSize=4;" parent="1" vertex="1">
+                    <mxGeometry x="30" y="1190" width="1150" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="2" value="&lt;font style=&quot;color: rgb(184, 84, 80);&quot;&gt;5. Validations failed&lt;/font&gt;" style="html=1;rounded=0;endArrow=open;startArrow=none;dashed=1;fontSize=11;labelBackgroundColor=#eef3fb;strokeColor=#B85450;" parent="1" edge="1">
+                    <mxGeometry x="0.0022" relative="1" as="geometry">
+                        <mxPoint x="564" y="390" as="sourcePoint"/>
+                        <mxPoint x="115" y="390" as="targetPoint"/>
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="3" value="&lt;font style=&quot;color: rgb(184, 84, 80);&quot;&gt;6. Customer rejects&lt;/font&gt;" style="html=1;rounded=0;endArrow=open;startArrow=none;dashed=1;fontSize=11;labelBackgroundColor=#eef3fb;strokeColor=#B85450;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" target="actAuto">
+                    <mxGeometry x="0.0022" relative="1" as="geometry">
+                        <mxPoint x="108.82352941176487" y="996.9100000000001" as="sourcePoint"/>
+                        <mxPoint x="319" y="996.9100000000001" as="targetPoint"/>
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
                 </mxCell>
             </root>
         </mxGraphModel>
