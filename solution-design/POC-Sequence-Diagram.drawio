@@ -1,0 +1,97 @@
+<mxfile host="65bd71144e">
+    <diagram name="POC - SMS Happy Path" id="poc-seq-1">
+        <mxGraphModel dx="1131" dy="847" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="900" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="title" value="Intoxalock Device Removal — POC (SMS-only, happy path)" style="text;html=1;fontSize=16;fontStyle=1;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="14" width="1080" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="subtitle" value="Simulated in a UI: three phones (Customer · Service Center · Representative) + the Automation System. Every customer/center message is an SMS. Timers compressed for demo." style="text;html=1;fontSize=11;fontColor=#666666;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="40" width="1080" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="L1" value="📱&#xa;Customer&#xa;(phone)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;collapsible=0;recursiveResize=0;outlineConnect=0;size=70;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1;verticalAlign=top;spacingTop=8;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="80" width="150" height="700" as="geometry"/>
+                </mxCell>
+                <mxCell id="L2" value="🤖&#xa;Automation System&#xa;(backend · system of record)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;collapsible=0;recursiveResize=0;outlineConnect=0;size=70;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;fontStyle=1;verticalAlign=top;spacingTop=8;" parent="1" vertex="1">
+                    <mxGeometry x="340" y="80" width="200" height="700" as="geometry"/>
+                </mxCell>
+                <mxCell id="L3" value="📱&#xa;Service Center&#xa;(phone)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;collapsible=0;recursiveResize=0;outlineConnect=0;size=70;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;fontStyle=1;verticalAlign=top;spacingTop=8;" parent="1" vertex="1">
+                    <mxGeometry x="660" y="80" width="160" height="700" as="geometry"/>
+                </mxCell>
+                <mxCell id="L4" value="📱&#xa;Intoxalock&#xa;Representative&#xa;(phone)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;collapsible=0;recursiveResize=0;outlineConnect=0;size=70;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1;verticalAlign=top;spacingTop=8;" parent="1" vertex="1">
+                    <mxGeometry x="940" y="80" width="160" height="700" as="geometry"/>
+                </mxCell>
+                <mxCell id="actSys" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+                    <mxGeometry x="434" y="170" width="12" height="540" as="geometry"/>
+                </mxCell>
+                <mxCell id="actSC" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+                    <mxGeometry x="734" y="360" width="12" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="m1" value="1 · SMS: removal request + two preferred time ranges" style="html=1;rounded=0;endArrow=block;startArrow=none;fontSize=11;labelBackgroundColor=#ffffff;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="135" y="175" as="sourcePoint"/>
+                        <mxPoint x="434" y="175" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="m2" value="2 · Eligibility OK · validate ranges (mock data)" style="html=1;rounded=1;endArrow=block;startArrow=none;fontSize=11;labelBackgroundColor=#ffffff;exitX=1;exitY=0.04;exitDx=0;exitDy=0;entryX=1;entryY=0.08;entryDx=0;entryDy=0;" parent="1" source="actSys" target="actSys" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="446" y="200" as="sourcePoint"/>
+                        <mxPoint x="560" y="200" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="490" y="200"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="m3" value="3 · SMS ack: &quot;Request received — NOT a confirmed appointment&quot;" style="html=1;rounded=0;endArrow=open;startArrow=none;dashed=1;fontSize=11;labelBackgroundColor=#ffffff;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="434" y="240" as="sourcePoint"/>
+                        <mxPoint x="135" y="240" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="m4" value="4 · SMS to center: removal request — reply &quot;CONFIRM &lt;time&gt;&quot; + quote" style="html=1;rounded=0;endArrow=block;startArrow=none;fontSize=11;labelBackgroundColor=#ffffff;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="446" y="365" as="sourcePoint"/>
+                        <mxPoint x="734" y="365" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="mKW" value="↺ keep-warm SMS every ~15s (demo): &quot;still being worked, not yet confirmed&quot;" style="html=1;rounded=0;endArrow=open;startArrow=none;dashed=1;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#3b5b8c;fontColor=#3b5b8c;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="434" y="320" as="sourcePoint"/>
+                        <mxPoint x="135" y="320" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="m5" value="5 · SMS reply: &quot;CONFIRM 2PM&quot; + quote $X" style="html=1;rounded=0;endArrow=block;startArrow=none;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#2e7d32;fontColor=#2e7d32;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="734" y="470" as="sourcePoint"/>
+                        <mxPoint x="446" y="470" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="m6" value="6 · Generate Work Order #1234 (internal — gate before any &quot;confirmed&quot;)" style="html=1;rounded=1;endArrow=block;startArrow=none;fontSize=11;labelBackgroundColor=#ffffff;strokeColor=#9673a6;fontColor=#6a4f86;exitX=1.024;exitY=0.611;exitDx=0;exitDy=0;entryX=1.103;entryY=0.678;entryDx=0;entryDy=0;entryPerimeter=0;exitPerimeter=0;" parent="1" source="actSys" target="actSys" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="446" y="510" as="sourcePoint"/>
+                        <mxPoint x="560" y="510" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="500" y="510"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="m7" value="7 · Surface quote $X to representative (SMS)" style="html=1;rounded=0;endArrow=open;startArrow=none;dashed=1;fontSize=11;labelBackgroundColor=#ffffff;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="446" y="560" as="sourcePoint"/>
+                        <mxPoint x="1015" y="560" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="m8" value="8 · SMS with confirmation" style="html=1;rounded=0;endArrow=block;startArrow=none;fontSize=12;fontStyle=1;labelBackgroundColor=#ffffff;strokeColor=#2e7d32;fontColor=#2e7d32;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="434" y="660" as="sourcePoint"/>
+                        <mxPoint x="135" y="660" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="noteScope" value="POC SCOPE&#xa;• Happy path only — no decline, no center-silence escalation, no Phase-3 warnings.&#xa;• SMS is the ONLY channel: the Confirmation Page becomes a structured SMS reply (&quot;CONFIRM &lt;time&gt;&quot;); the AI-voice rung is dropped.&#xa;• Eligibility gate, Operating-Hours DB, consent/AI-disclosure, quote negotiation = stubbed or omitted.&#xa;• Work Order is a simulated internal event — issued BEFORE the customer is told &quot;confirmed.&quot;&#xa;• Timers compressed (~15s) for demo; production is lead-time-aware (48–72h).&#xa;• &quot;Confirmed&quot; is reserved for step 8 only — request ≠ appointment is preserved end to end." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5fbf4;strokeColor=#cbe3c6;fontColor=#2e5a2e;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingTop=8;spacingRight=8;arcSize=4;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="800" width="1040" height="120" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
