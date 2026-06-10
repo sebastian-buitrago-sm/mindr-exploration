@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram name="Removal Scheduling - Solution Sequence" id="sol-seq-1">
-        <mxGraphModel dx="2953" dy="2438" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1540" pageHeight="1380" math="0" shadow="0">
+        <mxGraphModel dx="3082" dy="2535" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1540" pageHeight="1380" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -135,7 +135,7 @@
                         <mxPoint x="576" y="660" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="m10" value="10 · Generate Work Order (internal — system of record)" style="html=1;rounded=1;endArrow=block;startArrow=none;fontSize=11;labelBackgroundColor=#eaf6ea;strokeColor=#9673a6;fontColor=#6a4f86;exitX=0.818;exitY=0.579;exitDx=0;exitDy=0;entryX=0.818;entryY=0.627;entryDx=0;entryDy=0;entryPerimeter=0;exitPerimeter=0;" parent="1" source="actAuto" target="actAuto" edge="1">
+                <mxCell id="m10" value="10 · Generate Work Order (internal — system of record)" style="html=1;rounded=1;endArrow=block;startArrow=none;fontSize=11;labelBackgroundColor=#eaf6ea;strokeColor=#2e7d32;fontColor=#2e7d32;exitX=0.818;exitY=0.579;exitDx=0;exitDy=0;entryX=0.818;entryY=0.627;entryDx=0;entryDy=0;entryPerimeter=0;exitPerimeter=0;" parent="1" source="actAuto" target="actAuto" edge="1">
                     <mxGeometry x="0.0313" y="9" relative="1" as="geometry">
                         <mxPoint x="576" y="700" as="sourcePoint"/>
                         <mxPoint x="720" y="700" as="targetPoint"/>
@@ -145,65 +145,57 @@
                         <mxPoint as="offset"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="m11" value="11 · Work Order issued ✓ — if it fails, escalate to human" style="html=1;rounded=1;endArrow=block;startArrow=none;fontSize=11;labelBackgroundColor=#eaf6ea;strokeColor=#2e7d32;fontColor=#2e7d32;exitX=1;exitY=0.64;exitDx=0;exitDy=0;entryX=0.994;entryY=0.684;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="actAuto" target="actAuto" edge="1">
-                    <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="576" y="740" as="sourcePoint"/>
-                        <mxPoint x="576" y="751" as="targetPoint"/>
-                        <Array as="points">
-                            <mxPoint x="620" y="740"/>
-                        </Array>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="m12" value="12 · Surface quote to representative ( UI&amp;nbsp; + email + zendes(?))" style="html=1;rounded=0;endArrow=open;startArrow=none;dashed=1;fontSize=11;labelBackgroundColor=#eaf6ea;" parent="1" edge="1">
-                    <mxGeometry relative="1" as="geometry">
+                <mxCell id="m12" value="11 · Surface quote to representative ( UI&amp;nbsp; + email + zendesk(?))" style="html=1;rounded=0;endArrow=open;startArrow=none;dashed=1;fontSize=11;labelBackgroundColor=#eaf6ea;" parent="1" edge="1">
+                    <mxGeometry x="0.0017" relative="1" as="geometry">
                         <mxPoint x="576" y="780" as="sourcePoint"/>
                         <mxPoint x="1084" y="780" as="targetPoint"/>
+                        <mxPoint as="offset"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="m13" value="13 · Confirmed appoiment (SMS + email)" style="html=1;rounded=0;endArrow=block;startArrow=none;fontSize=12;fontStyle=1;labelBackgroundColor=#eaf6ea;strokeColor=#2e7d32;fontColor=#2e7d32;" parent="1" edge="1">
+                <mxCell id="m13" value="&lt;span style=&quot;font-weight: normal;&quot;&gt;12 · Confirmed appoinment (SMS + email)&lt;/span&gt;" style="html=1;rounded=0;endArrow=block;startArrow=none;fontSize=12;fontStyle=1;labelBackgroundColor=#eaf6ea;strokeColor=#2e7d32;fontColor=#2e7d32;" parent="1" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="564" y="820" as="sourcePoint"/>
                         <mxPoint x="115" y="820" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="m14" value="14 · Decline&amp;nbsp; + time alternatives (TTL)" style="html=1;rounded=0;endArrow=open;startArrow=none;dashed=1;fontSize=11;labelBackgroundColor=#fbe6d4;strokeColor=#d79b00;fontColor=#a9761a;" parent="1" edge="1">
+                <mxCell id="m14" value="13 · Decline&amp;nbsp; + time alternatives (TTL)" style="html=1;rounded=0;endArrow=open;startArrow=none;dashed=1;fontSize=11;labelBackgroundColor=#fbe6d4;strokeColor=#d79b00;fontColor=#a9761a;" parent="1" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="834" y="890" as="sourcePoint"/>
                         <mxPoint x="576" y="890" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="m15" value="15 · SMS + Email to accept the new schedule" style="html=1;rounded=0;endArrow=block;startArrow=none;fontSize=11;labelBackgroundColor=#fbe6d4;" parent="1" edge="1">
+                <mxCell id="m15" value="14 · SMS + Email to accept the new schedule" style="html=1;rounded=0;endArrow=block;startArrow=none;fontSize=11;labelBackgroundColor=#fbe6d4;" parent="1" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="564" y="925" as="sourcePoint"/>
                         <mxPoint x="115" y="925" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="m16" value="16 · Accept new time = Confirmed&amp;nbsp; → back to step 10" style="html=1;rounded=0;endArrow=block;startArrow=none;fontSize=11;labelBackgroundColor=#fbe6d4;" parent="1" edge="1">
+                <mxCell id="m16" value="15 · Accept new time = Confirmed&amp;nbsp; → back to step 10" style="html=1;rounded=0;endArrow=block;startArrow=none;fontSize=11;labelBackgroundColor=#fbe6d4;" parent="1" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="115" y="960" as="sourcePoint"/>
                         <mxPoint x="564" y="960" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="m17" value="17 · Customer silent / WO failed → escalate w/ history; remind until resolved" style="html=1;rounded=0;endArrow=block;startArrow=none;dashed=1;fontSize=11;labelBackgroundColor=#fbe6d4;strokeColor=#d79b00;fontColor=#a9761a;" parent="1" edge="1">
+                <mxCell id="m17" value="16 · Customer silent / WO failed → escalate w/ history; remind until resolved" style="html=1;rounded=0;endArrow=block;startArrow=none;dashed=1;fontSize=11;labelBackgroundColor=#fbe6d4;strokeColor=#d79b00;fontColor=#a9761a;" parent="1" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="576" y="995" as="sourcePoint"/>
                         <mxPoint x="1084" y="995" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="m18" value="18 · CONFIRMED → reminder 12h before (time + center location)" style="html=1;rounded=0;endArrow=block;startArrow=none;fontSize=11;labelBackgroundColor=#f0f0f0;strokeColor=#2e7d32;fontColor=#2e7d32;" parent="1" edge="1">
+                <mxCell id="m18" value="17 · CONFIRMED → reminder 12h before (time + center location)" style="html=1;rounded=0;endArrow=block;startArrow=none;fontSize=11;labelBackgroundColor=#f0f0f0;strokeColor=#2e7d32;fontColor=#2e7d32;" parent="1" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="564" y="1080" as="sourcePoint"/>
                         <mxPoint x="115" y="1080" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="m19" value="19 ·&amp;nbsp; UNCONFIRMED 12h before - remind user not to go&amp;nbsp;" style="html=1;rounded=0;endArrow=open;startArrow=none;dashed=1;fontSize=11;labelBackgroundColor=#f0f0f0;strokeColor=#b85450;fontColor=#b85450;" parent="1" edge="1">
+                <mxCell id="m19" value="18 ·&amp;nbsp; UNCONFIRMED 12h before - remind user not to go&amp;nbsp;" style="html=1;rounded=0;endArrow=open;startArrow=none;dashed=1;fontSize=11;labelBackgroundColor=#f0f0f0;strokeColor=#b85450;fontColor=#b85450;" parent="1" edge="1">
                     <mxGeometry x="0.0009" relative="1" as="geometry">
                         <mxPoint x="549" y="1120" as="sourcePoint"/>
                         <mxPoint x="100" y="1120" as="targetPoint"/>
                         <mxPoint as="offset"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="ohBox" value="🗂 OPERATING HOURS DB — built &amp; kept fresh in the background (not per request)&#xa;&#xa;🌐 Scrape public web / listings for each center&#39;s hours&#xa;✉ Email service centers asking them to confirm / provide their hours&#xa;↩ Replies &amp; scrapes update the DB · refreshed periodically&#xa;ⓘ Best-effort hint layer — constrains the slots a customer can pick (open ≠ available)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;fontColor=#3b5b8c;dashed=1;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;spacingTop=8;arcSize=6;shadow=1;" parent="1" vertex="1">
+                <mxCell id="ohBox" value="🗂 OPERATING HOURS CACHE — fetched lazily, per assigned center, at intake (not in bulk)&#xa;&#xa;🌐 Licensed places API (e.g. Google Places) on cache miss / stale TTL — no scraping&#xa;✉ Center confirms / corrects its hours via a widget on the Confirmation Page&#xa;↩ Seeded from Intoxalock&#39;s existing hours data where available&#xa;ⓘ Best-effort hint layer — constrains the slots a customer can pick (open ≠ available)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;fontColor=#3b5b8c;dashed=1;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;spacingTop=8;arcSize=6;shadow=1;" parent="1" vertex="1">
                     <mxGeometry x="-20" y="-150" width="465" height="150" as="geometry"/>
                 </mxCell>
                 <mxCell id="ohFeed" value="feeds Step 4 validation" style="html=1;endArrow=block;startArrow=none;dashed=1;fontSize=10;fontColor=#3b5b8c;strokeColor=#6c8ebf;labelBackgroundColor=none;exitX=1.001;exitY=0.578;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="ohBox" edge="1">
