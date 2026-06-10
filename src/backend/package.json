@@ -1,0 +1,27 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "build": "tsc",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@types/node": "^25.9.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^6.0.3",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.162",
+    "@types/jest": "^30.0.0",
+    "jest": "^30.4.2",
+    "ts-jest": "^29.4.11"
+  }
+}
