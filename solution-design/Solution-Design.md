@@ -61,6 +61,14 @@ These cut across all three phases:
   booking happens in the Confirmation Ladder. When trusted hours are unavailable for a
   center, intake falls back to a default business-hours window rather than hard-blocking
   the customer.
+- **Hours sourcing (resolved).** Hours are fetched **lazily, per assigned center, at
+  intake time** from a **licensed places API** (e.g. Google Places) and cached with a
+  TTL — any of the 5000+ centers is coverable, but only the ~100/month that receive a
+  request are ever looked up. No scraping (ToS liability) and no bulk background
+  refresh (would cost more than the rest of the system to keep 4,900 unused centers
+  fresh). Centers confirm or correct their own hours via a one-line widget on the
+  Confirmation Page, enriching the cache as a side effect of interactions that already
+  happen. Seeded from any hours data Intoxalock already holds (§8.7).
 
 ---
 
