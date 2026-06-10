@@ -31,10 +31,17 @@ infra/*.tfstate.backup
 infra/*.tfstate.*.backup
 infra/.terraform.lock.hcl
 infra/terraform.tfvars
+src/Infra/.terraform/
+src/Infra/*.tfstate
+src/Infra/*.tfstate.backup
+src/Infra/*.tfstate.*.backup
+src/Infra/terraform.tfvars
 
 # Lambda deployment packages
 backend/dist/
 backend/dist/lambda.zip
+src/backend/dist/
 
 # Frontend env
 frontend/.env*.local
+src/frontend/.env*.local
