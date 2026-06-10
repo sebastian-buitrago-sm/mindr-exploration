@@ -61,7 +61,6 @@ export function RequestForm({ onSuccess, onError, submitFn }: RequestFormProps) 
             required
             error={!!errors.fullName}
             helperText={errors.fullName?.message}
-            inputProps={{ 'aria-label': 'Full Name' }}
           />
         )}
       />

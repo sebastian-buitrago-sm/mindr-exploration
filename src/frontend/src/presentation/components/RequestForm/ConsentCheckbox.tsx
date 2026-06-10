@@ -1,8 +1,10 @@
+import { useState } from 'react';
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormHelperText from '@mui/material/FormHelperText';
 import FormControl from '@mui/material/FormControl';
 import Link from '@mui/material/Link';
+import { TermsModal } from '../TermsModal/TermsModal';
 
 interface ConsentCheckboxProps {
   checked: boolean;
@@ -12,6 +14,8 @@ interface ConsentCheckboxProps {
 }
 
 export function ConsentCheckbox({ checked, onChange, error, helperText }: ConsentCheckboxProps) {
+  const [termsOpen, setTermsOpen] = useState(false);
+
   return (
     <FormControl error={error}>
       <FormControlLabel
@@ -22,13 +26,17 @@ export function ConsentCheckbox({ checked, onChange, error, helperText }: Consen
             checked={checked}
             onChange={(e) => onChange(e.target.checked)}
             color="primary"
-            inputProps={{ 'aria-label': 'TCPA consent' }}
           />
         }
         label={
-          <span>
+          <span style={{ fontSize: '0.875rem' }}>
             I authorize Intoxalock to contact me via automated call per the{' '}
-            <Link href="#" target="_blank" rel="noopener noreferrer">
+            <Link
+              component="button"
+              type="button"
+              onClick={(e) => { e.preventDefault(); setTermsOpen(true); }}
+              sx={{ fontWeight: 600, verticalAlign: 'baseline' }}
+            >
               Terms & Conditions
             </Link>
             .
@@ -36,6 +44,7 @@ export function ConsentCheckbox({ checked, onChange, error, helperText }: Consen
         }
       />
       {helperText && <FormHelperText>{helperText}</FormHelperText>}
+      <TermsModal open={termsOpen} onClose={() => setTermsOpen(false)} />
     </FormControl>
   );
 }

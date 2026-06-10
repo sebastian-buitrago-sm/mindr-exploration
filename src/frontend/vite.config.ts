@@ -6,14 +6,4 @@ export default defineConfig({
   server: {
     port: 3000,
   },
-  test: {
-    globals: true,
-    environment: 'jsdom',
-    setupFiles: ['./src/test-setup.ts'],
-    server: {
-      deps: {
-        inline: ['@mui/material', '@mui/icons-material', '@emotion/react', '@emotion/styled', 'mui-tel-input'],
-      },
-    },
-  },
 });

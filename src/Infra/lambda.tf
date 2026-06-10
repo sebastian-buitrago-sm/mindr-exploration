@@ -20,7 +20,7 @@ resource "aws_lambda_function" "call_request" {
   filename         = var.lambda_zip_path
   function_name    = "intoxalock-device-removal-call-request"
   role             = aws_iam_role.lambda_exec.arn
-  handler          = "src/presentation/handlers/callRequestHandler.handler"
+  handler          = "dist/presentation/handlers/callRequestHandler.handler"
   runtime          = "nodejs18.x"
   timeout          = 30
   source_code_hash = filebase64sha256(var.lambda_zip_path)

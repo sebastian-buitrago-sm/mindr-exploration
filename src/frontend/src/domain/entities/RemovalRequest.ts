@@ -8,9 +8,7 @@ export const removalRequestSchema = z.object({
   phoneNumber: z
     .string()
     .regex(/^\+[1-9]\d{6,14}$/, 'Please enter a valid phone number'),
-  tcpaConsent: z.literal(true, {
-    errorMap: () => ({ message: 'You must consent to be contacted' }),
-  }),
+  tcpaConsent: z.literal(true, { error: 'You must consent to be contacted' }),
   submittedAt: z.string(),
 });
 
