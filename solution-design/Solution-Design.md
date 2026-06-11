@@ -61,27 +61,32 @@ These cut across all three phases:
   booking happens in the Confirmation Ladder. When trusted hours are unavailable for a
   center, intake falls back to a default business-hours window rather than hard-blocking
   the customer.
-- **Hours sourcing (resolved).** Hours are fetched **lazily, per assigned center, at
-  intake time** from a **licensed places API** (e.g. Google Places) and cached with a
-  TTL — any of the 5000+ centers is coverable, but only the ~100/month that receive a
-  request are ever looked up. No scraping (ToS liability) and no bulk background
-  refresh (would cost more than the rest of the system to keep 4,900 unused centers
-  fresh). Centers confirm or correct their own hours via a one-line widget on the
-  Confirmation Page, enriching the cache as a side effect of interactions that already
-  happen. Seeded from any hours data Intoxalock already holds (§8.7).
+- **Hours sourcing (to validate via spike).** Operating hours come **from Intoxalock's
+  existing service-center database** — the system of record for the center network — and
+  this system does **not** build or consolidate its own copy. A **one-time, upfront
+  data-extraction process** enriches that database with operating hours **wherever they
+  are missing**. This extraction is **not yet proven and will be validated with a technical
+  spike** before commitment; candidate approaches include the **Google Places API** and
+  **targeted web scraping** of public listings — the spike assesses coverage, accuracy,
+  cost, and ToS/legal exposure of each. Enrichment runs **ahead of time, not at intake**,
+  so hours are on file before a customer picks a slot. Centers also confirm or correct
+  their own hours via a one-line widget on the Confirmation Page, writing back over time.
 
 ---
 
 ## 4. Phase 1 — Request intake
 
-**Three channels, one canonical Removal Request.** All intake normalizes into a single
+**Two channels, one canonical Removal Request.** Intake uses **Intoxalock's existing
+channels only** — no new intake surfaces are built. All intake normalizes into a single
 request object and triggers the **same** written acknowledgment, regardless of channel:
 
 | Channel | Handling |
 |---|---|
 | **Mobile app** | Customer confirms eligibility and submits two **Preferred Time Ranges** (2-hour windows), constrained to the center's Operating Hours and to the **Minimum Lead Time**. |
-| **Inbound SMS** | Customer receives a link to the same web form; same flow as the app. |
-| **Inbound call** | Handled by an **AI Voice Agent** (with AI-disclosure up front) that captures eligibility, vehicle, and time ranges; **drops to a human rep** on any complexity or on request. The phone channel is retained for accessibility (ADA Title III) and because it is an existing official channel. |
+| **Existing IVR / phone** | Intoxalock's **existing IVR/phone channel is unchanged**; the request it captures is handed to this system via integration. **No AI voice agent is used at intake** — the AI agent's role is scheduling *with the center* in Phase 2 (§5.2). The phone channel satisfies accessibility (ADA Title III) as an existing official channel. |
+
+> SMS is **not** an intake channel — it is an **outreach** channel only (acknowledgments,
+> keep-warm reminders, and the center Confirmation Page link), consent-gated per §4.
 
 Intake rules:
 - **Eligibility Gate** runs first. Ineligible / paperwork-required → routed to a human
@@ -206,12 +211,12 @@ dropped" true on the human side.
 | Requirement | Where it lives in this design |
 |---|---|
 | Per-channel, timestamped, revocable consent; STOP/opt-out | Data model from day one; gates all SMS/AI-voice outreach (§4, §5). |
-| AI-disclosure on every automated channel | AI Voice Agent intake and outbound calls; any automated chat. |
+| AI-disclosure on every automated channel | AI Voice Agent **outbound (center) calls**; any automated chat. No AI at intake. |
 | Request-vs-appointment clarity | Acknowledgment + reminder copy; "confirmed" reserved for a real Confirmed Appointment (§2.6, §4, §6). |
 | State-aware eligibility gating, human-supervised | Eligibility Gate (§4); paperwork cohort never auto-confirmed. |
 | Data minimization / DPPA / state privacy | Confirmation Page minimized + signed link (§5.1). |
 | Call-recording disclosure (if recorded) | AI Voice Agent call opening — open item (§8). |
-| Accessible non-AI path | Phone channel retained, human-rep fallback (§4). |
+| Accessible non-AI path | **Existing IVR/phone channel** retained; human-rep fallback (§4). |
 | Payment data isolation | No card data in this system in v1 (quotes are not paid here). |
 
 ---
@@ -236,12 +241,20 @@ These were surfaced during the review and need client/counsel input:
 6. **Eligibility/paperwork data.** What is the proportion of removals that require state
    paperwork, and is that status reliably available at intake to drive the Eligibility
    Gate?
-7. **Operating-hours sourcing.** Acceptable source(s) for the best-effort hours hint
-   layer (existing Intoxalock data, listings, etc.).
+7. **Operating-hours sourcing (spike).** A technical spike will validate whether missing
+   operating hours can be reliably sourced at all — evaluating the **Google Places API**
+   and **targeted web scraping** for coverage, accuracy, cost, and ToS/legal exposure —
+   before the one-time upfront enrichment (§3) is committed.
 8. **Call recording.** Will AI voice calls be recorded? If so, all-party-consent
    disclosure is required in ~12 states.
 9. **Minimum Lead Time & cadence values.** Confirm the actual numbers (lead time,
    ladder intervals, reminder cadences) — all are tunable placeholders here.
+10. **Intake integration (App + IVR).** What is the integration point by which a request
+    created in the mobile app and in the **existing IVR/phone channel** reaches this
+    system's `/intake` endpoint, and do those channels capture the required structured
+    fields (two 2-hour Preferred Time Ranges, vehicle, eligibility) — or must this system
+    validate and bounce back? (Determines whether the Operating-Hours slot constraint
+    lives in the existing app UI or only in post-receipt validation.)
 
 ---
 

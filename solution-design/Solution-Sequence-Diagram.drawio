@@ -28,7 +28,7 @@
                 <mxCell id="L1" value="👤&#xa;Customer" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;collapsible=0;recursiveResize=0;outlineConnect=0;size=80;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1;verticalAlign=top;spacingTop=8;" parent="1" vertex="1">
                     <mxGeometry x="40" y="70" width="150" height="1100" as="geometry"/>
                 </mxCell>
-                <mxCell id="L2" value="📱&lt;br&gt;Intake Channels&lt;br&gt;(App / SMS / Call -AI Voice)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;collapsible=0;recursiveResize=0;outlineConnect=0;size=80;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;fontStyle=1;verticalAlign=top;spacingTop=8;" parent="1" vertex="1">
+                <mxCell id="L2" value="📱&lt;br&gt;Intake Channels&lt;br&gt;(App / IVR phone)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;collapsible=0;recursiveResize=0;outlineConnect=0;size=80;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;fontStyle=1;verticalAlign=top;spacingTop=8;" parent="1" vertex="1">
                     <mxGeometry x="240" y="70" width="170" height="1100" as="geometry"/>
                 </mxCell>
                 <mxCell id="L3" value="🤖&lt;br&gt;Automation System&lt;div&gt;&lt;br/&gt;&lt;/div&gt;" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;collapsible=0;recursiveResize=0;outlineConnect=0;size=80;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1;verticalAlign=top;spacingTop=8;" parent="1" vertex="1">
@@ -202,7 +202,7 @@
                         <mxPoint as="offset"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="ohBox" value="🗂 Consolidate service center operating hours database:&amp;nbsp;&lt;br&gt;&lt;br&gt;🌐 use google places API or scrapping&amp;nbsp;&lt;br&gt;✉ Service Center confirms / corrects via web page sent via email or SMS&amp;nbsp;&lt;div&gt;&lt;br/&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;fontColor=#3b5b8c;dashed=1;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;spacingTop=8;arcSize=6;shadow=1;" parent="1" vertex="1">
+                <mxCell id="ohBox" value="🗂 Use Intoxalock's existing service-center database&amp;nbsp;&lt;br&gt;(locations, contacts, hours) — not a new build&amp;nbsp;&lt;br&gt;&lt;br&gt;🌐 one-time upfront extraction enriches the DB with missing hours&amp;nbsp;&lt;br&gt;🔬 spike: validate feasibility via Google Places API / scraping&amp;nbsp;&lt;br&gt;✉ Service Center confirms / corrects hours via the Confirmation Page (email or SMS)&amp;nbsp;&lt;div&gt;&lt;br/&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;fontColor=#3b5b8c;dashed=1;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;spacingTop=8;arcSize=6;shadow=1;" parent="1" vertex="1">
                     <mxGeometry x="-20" y="-120" width="465" height="100" as="geometry"/>
                 </mxCell>
                 <mxCell id="ohFeed" value="feeds Step 4 validation" style="html=1;endArrow=block;startArrow=none;dashed=1;fontSize=10;fontColor=#3b5b8c;strokeColor=#6c8ebf;labelBackgroundColor=none;exitX=1.001;exitY=0.578;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="ohBox" edge="1">
