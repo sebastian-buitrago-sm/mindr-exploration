@@ -24,7 +24,7 @@ Otras preguntas :
 -  Intoxalock opera solo en U.S.A? 
 -  Se requiere soporte multi idioma? 
 -  en el document de la meeting se mencionan work orders, esas ordenes de desinstalación se podrían generar de manera automática, o deben ser generadas por un humano?
--  
+-  Con cuantos días de anticipación se le va a permitir agendar al cliente 
 
 
 
