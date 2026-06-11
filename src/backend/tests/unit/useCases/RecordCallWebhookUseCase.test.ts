@@ -1,94 +1,89 @@
 import { RecordCallWebhookUseCase } from '../../../src/application/useCases/RecordCallWebhookUseCase';
-import { IRemovalRequestRepository } from '../../../src/domain/ports/IRemovalRequestRepository';
+import type { ICallRecordRepository } from '../../../src/domain/ports/ICallRecordRepository';
 
-const mockRepository: jest.Mocked<IRemovalRequestRepository> = {
+const mockRepository: jest.Mocked<ICallRecordRepository> = {
   save: jest.fn(),
+  updateStatus: jest.fn(),
+  findLatestInProgressByShopPhone: jest.fn(),
   findAll: jest.fn(),
 };
+
+function makePayload(overrides: Record<string, string> = {}) {
+  return {
+    data: {
+      conversation_id: 'conv_abc123',
+      data_collection_results: {
+        confirmed_slot: { value: overrides.confirmed_slot ?? '' },
+        shop_suggested_slot_1: { value: overrides.shop_suggested_slot_1 ?? '' },
+        shop_suggested_slot_2: { value: overrides.shop_suggested_slot_2 ?? '' },
+      },
+    },
+  };
+}
 
 describe('RecordCallWebhookUseCase', () => {
   let useCase: RecordCallWebhookUseCase;
 
   beforeEach(() => {
     jest.clearAllMocks();
+    mockRepository.updateStatus.mockResolvedValue(undefined);
+    mockRepository.save.mockResolvedValue(undefined);
     useCase = new RecordCallWebhookUseCase(mockRepository);
   });
 
-  const validPayload = {
-    data: {
-      conversation_id: 'conv_abc123',
-      data_collection_results: {
-        user_name: { value: 'Jane Smith' },
-        contact_info: { value: '+15551234567' },
-        slot_1: { value: 'Tuesday June 17 at 2pm' },
-        slot_2: { value: 'Wednesday June 18 at 10am' },
-      },
-    },
-  };
+  it('(a) confirmed_slot non-empty → status=confirmed, updateStatus called with confirmedSlot', async () => {
+    await useCase.execute(makePayload({ confirmed_slot: 'October 10th 2026 at 10:00am' }));
 
-  it('saves a record when all four fields are present', async () => {
-    mockRepository.save.mockResolvedValueOnce(undefined);
-    await useCase.execute(validPayload);
+    expect(mockRepository.updateStatus).toHaveBeenCalledTimes(1);
+    expect(mockRepository.updateStatus).toHaveBeenCalledWith(
+      'conv_abc123',
+      'confirmed',
+      'October 10th 2026 at 10:00am',
+      undefined
+    );
+    expect(mockRepository.save).not.toHaveBeenCalled();
+  });
+
+  it('(b) empty confirmed_slot + non-empty shop_suggested_slot_1 → status=needs_recontact, shopSuggestedSlots set', async () => {
+    await useCase.execute(makePayload({
+      shop_suggested_slot_1: 'October 12th 2026 at 8:00am',
+      shop_suggested_slot_2: 'October 15th 2026 at 11:00am',
+    }));
+
+    expect(mockRepository.updateStatus).toHaveBeenCalledTimes(1);
+    const [, status, , shopSuggestedSlots] = mockRepository.updateStatus.mock.calls[0];
+    expect(status).toBe('needs_recontact');
+    const shopSlots = JSON.parse(shopSuggestedSlots!);
+    expect(shopSlots).toContain('October 12th 2026 at 8:00am');
+    expect(shopSlots).toContain('October 15th 2026 at 11:00am');
+  });
+
+  it('(c) all empty values → status=failed, no slot fields', async () => {
+    await useCase.execute(makePayload());
+
+    expect(mockRepository.updateStatus).toHaveBeenCalledTimes(1);
+    const [, status, confirmedSlot, shopSuggestedSlots] = mockRepository.updateStatus.mock.calls[0];
+    expect(status).toBe('failed');
+    expect(confirmedSlot).toBeUndefined();
+    expect(shopSuggestedSlots).toBeUndefined();
+  });
+
+  it('(d) duplicate callId → repository.updateStatus called again (upsert, no error)', async () => {
+    await useCase.execute(makePayload({ confirmed_slot: 'slot1' }));
+    await useCase.execute(makePayload({ confirmed_slot: 'slot1' }));
+    expect(mockRepository.updateStatus).toHaveBeenCalledTimes(2);
+  });
+
+  it('(e) no conversation_id → repository.save called with new UUID', async () => {
+    const payloadNoId = {
+      confirmed_slot: 'October 10th 2026 at 10:00am',
+    };
+    await useCase.execute(payloadNoId as Parameters<typeof useCase.execute>[0]);
+
     expect(mockRepository.save).toHaveBeenCalledTimes(1);
     const saved = mockRepository.save.mock.calls[0][0];
-    expect(saved.callId).toBe('conv_abc123');
-    expect(saved.userName).toBe('Jane Smith');
-    expect(saved.contactInfo).toBe('+15551234567');
-    expect(saved.slot1).toBe('Tuesday June 17 at 2pm');
-    expect(saved.slot2).toBe('Wednesday June 18 at 10am');
-    expect(typeof saved.submittedAt).toBe('string');
-  });
-
-  it.each([
-    ['user_name', { user_name: { value: '' }, contact_info: { value: '+15551234567' }, slot_1: { value: 'slot1' }, slot_2: { value: 'slot2' } }],
-    ['contact_info', { user_name: { value: 'Jane' }, contact_info: { value: '' }, slot_1: { value: 'slot1' }, slot_2: { value: 'slot2' } }],
-    ['slot_1', { user_name: { value: 'Jane' }, contact_info: { value: '+1555' }, slot_1: { value: '' }, slot_2: { value: 'slot2' } }],
-    ['slot_2', { user_name: { value: 'Jane' }, contact_info: { value: '+1555' }, slot_1: { value: 'slot1' }, slot_2: { value: '' } }],
-  ])('silently discards when %s is empty', async (_field, dataCollectionResults) => {
-    const payload = {
-      data: {
-        conversation_id: 'conv_xyz',
-        data_collection_results: dataCollectionResults,
-      },
-    };
-    await useCase.execute(payload);
-    expect(mockRepository.save).not.toHaveBeenCalled();
-  });
-
-  it('silently discards when data_collection_results is missing', async () => {
-    await useCase.execute({ data: { conversation_id: 'conv_xyz' } });
-    expect(mockRepository.save).not.toHaveBeenCalled();
-  });
-
-  it('calls save without error for duplicate callId', async () => {
-    mockRepository.save.mockResolvedValue(undefined);
-    await useCase.execute(validPayload);
-    await useCase.execute(validPayload);
-    expect(mockRepository.save).toHaveBeenCalledTimes(2);
-  });
-
-  describe('flat tool-call format', () => {
-    const flatPayload = {
-      conversation_id: 'conv_tool123',
-      user_name: 'Jane Smith',
-      contact_info: '+15551234567',
-      slot_1: 'Tuesday June 17 at 2pm',
-      slot_2: 'Wednesday June 18 at 10am',
-    };
-
-    it('saves a record from the flat tool-call payload', async () => {
-      mockRepository.save.mockResolvedValueOnce(undefined);
-      await useCase.execute(flatPayload);
-      expect(mockRepository.save).toHaveBeenCalledTimes(1);
-      const saved = mockRepository.save.mock.calls[0][0];
-      expect(saved.callId).toBe('conv_tool123');
-      expect(saved.userName).toBe('Jane Smith');
-      expect(saved.slot1).toBe('Tuesday June 17 at 2pm');
-    });
-
-    it('silently discards flat payload with missing field', async () => {
-      await useCase.execute({ ...flatPayload, user_name: '' });
-      expect(mockRepository.save).not.toHaveBeenCalled();
-    });
+    expect(saved.callId).toMatch(/^[0-9a-f-]{36}$/);
+    expect(saved.status).toBe('confirmed');
+    expect(mockRepository.updateStatus).not.toHaveBeenCalled();
   });
 });

@@ -1,6 +1,6 @@
-import { APIGatewayProxyEventV2, APIGatewayProxyResultV2 } from 'aws-lambda';
-import { GetRemovalRequestsUseCase } from '../../application/useCases/GetRemovalRequestsUseCase';
-import { DynamoRemovalRequestRepository } from '../../infrastructure/dynamo/DynamoRemovalRequestRepository';
+import type { APIGatewayProxyEventV2, APIGatewayProxyResultV2 } from 'aws-lambda';
+import { GetCallRecordsUseCase } from '../../application/useCases/GetCallRecordsUseCase';
+import { DynamoCallRecordRepository } from '../../infrastructure/dynamo/DynamoCallRecordRepository';
 
 const CORS_HEADERS = {
   'Access-Control-Allow-Origin': '*',
@@ -14,8 +14,8 @@ export const handler = async (
 ): Promise<APIGatewayProxyResultV2> => {
   try {
     const tableName = process.env.DYNAMODB_TABLE_NAME ?? 'intoxalock-removal-requests';
-    const repository = new DynamoRemovalRequestRepository(tableName);
-    const useCase = new GetRemovalRequestsUseCase(repository);
+    const repository = new DynamoCallRecordRepository(tableName);
+    const useCase = new GetCallRecordsUseCase(repository);
     const records = await useCase.execute();
 
     return {

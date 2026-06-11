@@ -9,7 +9,7 @@ export default mergeConfig(viteConfig, defineConfig({
     setupFiles: ['./src/test-setup.ts'],
     server: {
       deps: {
-        inline: ['@mui/material', '@mui/icons-material', '@emotion/react', '@emotion/styled', 'mui-tel-input'],
+        inline: ['@mui/material', '@mui/icons-material', '@emotion/react', '@emotion/styled', 'mui-tel-input', 'react-transition-group', '@mui/x-date-pickers'],
       },
     },
   },

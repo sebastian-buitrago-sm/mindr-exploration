@@ -1,15 +1,14 @@
 import type { APIGatewayProxyEventV2, APIGatewayProxyStructuredResultV2 } from 'aws-lambda';
-
-type APIGatewayProxyResultV2 = APIGatewayProxyStructuredResultV2;
 import { z } from 'zod';
-import { InitiateRemovalCallUseCase } from '../../application/useCases/InitiateRemovalCallUseCase';
-import { ElevenLabsCallService } from '../../infrastructure/elevenlabs/ElevenLabsCallService';
+import { InitiateCallUseCase } from '../../application/useCases/InitiateCallUseCase';
+import { DynamoCallRecordRepository } from '../../infrastructure/dynamo/DynamoCallRecordRepository';
 import { ValidationError, CallServiceError } from '../../domain/errors/DomainErrors';
 
+type APIGatewayProxyResultV2 = APIGatewayProxyStructuredResultV2;
+
 const requestSchema = z.object({
-  fullName: z.string().min(1).max(100),
-  phoneNumber: z.string().regex(/^\+[1-9]\d{6,14}$/),
-  tcpaConsent: z.literal(true),
+  shopPhone: z.string().min(1),
+  customerSlots: z.array(z.string().min(1)).min(1).max(4),
   submittedAt: z.string(),
 });
 
@@ -21,11 +20,7 @@ const CORS_HEADERS = {
 };
 
 function errorResponse(statusCode: number, error: string, code: string): APIGatewayProxyResultV2 {
-  return {
-    statusCode,
-    headers: CORS_HEADERS,
-    body: JSON.stringify({ error, code }),
-  };
+  return { statusCode, headers: CORS_HEADERS, body: JSON.stringify({ error, code }) };
 }
 
 export const handler = async (
@@ -40,26 +35,24 @@ export const handler = async (
 
   const validation = requestSchema.safeParse(parsed);
   if (!validation.success) {
-    const firstError = validation.error.issues[0];
-    return errorResponse(400, firstError?.message ?? 'Validation failed', 'VALIDATION_ERROR');
+    return errorResponse(400, validation.error.issues[0]?.message ?? 'Validation failed', 'VALIDATION_ERROR');
   }
 
   const request = validation.data;
 
   try {
-    const callService = new ElevenLabsCallService();
-    const useCase = new InitiateRemovalCallUseCase(callService);
-    const callRecord = await useCase.execute(request);
-
-    console.log(JSON.stringify({ submittedAt: request.submittedAt, status: 'success' }));
+    const tableName = process.env.DYNAMODB_TABLE_NAME ?? 'intoxalock-removal-requests';
+    const repository = new DynamoCallRecordRepository(tableName);
+    const useCase = new InitiateCallUseCase(repository);
+    const result = await useCase.execute(request);
 
     return {
       statusCode: 200,
       headers: CORS_HEADERS,
       body: JSON.stringify({
-        conversationId: callRecord.conversationId,
-        callSid: callRecord.callSid,
-        message: callRecord.message,
+        conversationId: result.conversationId,
+        callSid: result.callSid,
+        message: 'Call initiated successfully',
       }),
     };
   } catch (err) {
@@ -67,10 +60,8 @@ export const handler = async (
       return errorResponse(400, err.message, err.code);
     }
     if (err instanceof CallServiceError) {
-      console.error(JSON.stringify({ submittedAt: request.submittedAt, status: 'error', code: err.code }));
       return errorResponse(502, 'Failed to initiate call. Please try again.', err.code);
     }
-    console.error(JSON.stringify({ submittedAt: request.submittedAt, status: 'unknown_error' }));
     return errorResponse(500, 'An unexpected error occurred', 'INTERNAL_ERROR');
   }
 };

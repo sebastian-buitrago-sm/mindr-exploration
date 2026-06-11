@@ -35,3 +35,6 @@
 - Clarified (2026-06-10): Incomplete calls (missing fields) are silently discarded — HTTP 200, no record created.
 - Clarified (2026-06-10): No auth on either endpoint — open for POC demo scope.
 - Clarified (2026-06-10): Dashboard is manual-refresh only — no auto-polling.
+- Clarified (2026-06-11): Dynamic variables passed via `conversation_initiation_client_data.dynamic_variables` in `POST /v1/convai/twilio/outbound-call`. Agent prompt uses `{{slot_1}}`–`{{slot_4}}` with `{{#if}}` conditionals.
+- Clarified (2026-06-11): Slot strings formatted as natural English by frontend, e.g. "October 10th 2023 between 8am and 11am".
+- Clarified (2026-06-11): `in_progress` records shown in dashboard with grey badge and empty slot columns.

@@ -26,6 +26,7 @@ resource "aws_iam_role_policy" "dynamodb_access" {
       Effect = "Allow"
       Action = [
         "dynamodb:PutItem",
+        "dynamodb:UpdateItem",
         "dynamodb:Scan"
       ]
       Resource = aws_dynamodb_table.removal_requests.arn
@@ -47,6 +48,7 @@ resource "aws_lambda_function" "call_request" {
       ELEVENLABS_API_KEY               = var.elevenlabs_api_key
       ELEVENLABS_AGENT_ID              = var.elevenlabs_agent_id
       ELEVENLABS_AGENT_PHONE_NUMBER_ID = var.elevenlabs_agent_phone_number_id
+      DYNAMODB_TABLE_NAME              = var.dynamodb_table_name
     }
   }
 }

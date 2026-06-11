@@ -1,32 +1,32 @@
 {
   "type": "webhook",
-  "name": "save_removal_request",
-  "description": "Saves the user's device removal request to the database. Call this tool after the user confirms their summary in Step 3. Pass the user's name, contact information, and the two available time slots they provided.",
+  "name": "save_call_result",
+  "description": "Saves the outcome of the call with the service center. Call this tool after the call concludes — after confirming a slot (Step 3) or collecting the shop's proposed times (Step 2). Pass empty string for fields that do not apply.",
   "api_schema": {
-    "url": "https://fgx1ba4g78.execute-api.us-east-1.amazonaws.com/api/v1/webhook/call-completed",
+    "url": "https://d7f24w2sa1.execute-api.us-east-1.amazonaws.com/api/v1/webhook/call-completed",
     "method": "POST",
     "path_params_schema": [],
     "query_params_schema": [],
     "request_body_schema": {
       "id": "body",
       "type": "object",
-      "description": "Removal request data collected during the conversation.",
+      "description": "Call outcome data collected during the conversation with the service center.",
       "required": true,
       "properties": [
         {
-          "id": "conversation_id",
+          "id": "shop_phone",
           "type": "string",
-          "description": "The unique identifier of this conversation, provided automatically by ElevenLabs.",
-          "dynamic_variable": "conversation_id",
+          "description": "",
+          "dynamic_variable": "shop_phone",
           "constant_value": "",
           "value_type": "dynamic_variable",
           "required": true,
           "enum": null
         },
         {
-          "id": "user_name",
+          "id": "confirmed_slot",
           "type": "string",
-          "description": "The full name of the user as stated during the call.",
+          "description": "The exact time slot string verbally confirmed by the shop. Pass empty string if no slot was confirmed.",
           "dynamic_variable": "",
           "constant_value": "",
           "value_type": "llm_prompt",
@@ -34,9 +34,9 @@
           "enum": null
         },
         {
-          "id": "contact_info",
+          "id": "shop_suggested_slot_1",
           "type": "string",
-          "description": "The phone number or email address the user provided to be contacted for appointment confirmation.",
+          "description": "The first availability proposed by the shop when all customer slots were rejected. Pass empty string if a customer slot was confirmed.",
           "dynamic_variable": "",
           "constant_value": "",
           "value_type": "llm_prompt",
@@ -44,19 +44,9 @@
           "enum": null
         },
         {
-          "id": "slot_1",
+          "id": "shop_suggested_slot_2",
           "type": "string",
-          "description": "The first date and time the user is available for the device removal appointment, exactly as spoken by the user.",
-          "dynamic_variable": "",
-          "constant_value": "",
-          "value_type": "llm_prompt",
-          "required": true,
-          "enum": null
-        },
-        {
-          "id": "slot_2",
-          "type": "string",
-          "description": "The second date and time the user is available for the device removal appointment, exactly as spoken by the user.",
+          "description": "The second availability proposed by the shop. Pass empty string if not provided or if a customer slot was confirmed.",
           "dynamic_variable": "",
           "constant_value": "",
           "value_type": "llm_prompt",
@@ -64,22 +54,30 @@
           "enum": null
         }
       ],
-      "value_type": "llm_prompt"
+      "value_type": "llm_prompt",
+      "dynamic_variable": null,
+      "constant_value": null,
+      "enum": null
     },
     "request_headers": [],
     "content_type": "application/json",
     "auth_connection": null
   },
-  "response_timeout_secs": 20,
   "dynamic_variables": {
-    "dynamic_variable_placeholders": {}
+    "dynamic_variable_placeholders": {
+      "shop_phone": {
+        "type": "string_literal",
+        "value": ""
+      }
+    }
   },
   "assignments": [],
   "disable_interruptions": true,
   "pre_tool_speech": "auto",
-  "tool_call_sound": null,
+  "tool_call_sound": "typing",
   "tool_call_sound_behavior": "auto",
   "execution_mode": "immediate",
   "tool_error_handling_mode": "auto",
-  "response_mocks": []
+  "response_mocks": [],
+  "response_timeout_secs": 20
 }

@@ -1,82 +1,99 @@
-import { IRemovalRequestRepository } from '../../domain/ports/IRemovalRequestRepository';
-import { RemovalRequestRecord } from '../../domain/entities/RemovalRequestRecord';
+import { randomUUID } from 'crypto';
+import type { ICallRecordRepository } from '../../domain/ports/ICallRecordRepository';
+import type { CallRecord } from '../../domain/entities/CallRecord';
 
 interface DataCollectionResult {
   value?: string;
 }
 
-// ElevenLabs post-call webhook format
+// Post-call webhook format (automatic, fired by ElevenLabs after call ends)
 interface PostCallWebhookPayload {
   data?: {
     conversation_id?: string;
     data_collection_results?: {
-      user_name?: DataCollectionResult;
-      contact_info?: DataCollectionResult;
-      slot_1?: DataCollectionResult;
-      slot_2?: DataCollectionResult;
+      confirmed_slot?: DataCollectionResult;
+      shop_suggested_slot_1?: DataCollectionResult;
+      shop_suggested_slot_2?: DataCollectionResult;
     };
   };
 }
 
-// ElevenLabs client tool call format (flat body sent during conversation)
+// Webhook tool format (flat, sent mid-call when agent calls save_call_result tool)
 interface ToolCallPayload {
   conversation_id?: string;
-  user_name?: string;
-  contact_info?: string;
-  slot_1?: string;
-  slot_2?: string;
+  confirmed_slot?: string;
+  shop_suggested_slot_1?: string;
+  shop_suggested_slot_2?: string;
 }
 
 type WebhookPayload = PostCallWebhookPayload & ToolCallPayload;
 
 function extractFields(payload: WebhookPayload): {
   callId: string;
-  userName: string;
-  contactInfo: string;
-  slot1: string;
-  slot2: string;
+  confirmedSlot: string;
+  shopSlot1: string;
+  shopSlot2: string;
 } {
-  // Try post-call webhook format first (nested data_collection_results)
+  // Post-call webhook format: nested under data.data_collection_results
   if (payload.data?.data_collection_results) {
-    const results = payload.data.data_collection_results;
+    const r = payload.data.data_collection_results;
     return {
       callId: payload.data.conversation_id ?? '',
-      userName: results.user_name?.value ?? '',
-      contactInfo: results.contact_info?.value ?? '',
-      slot1: results.slot_1?.value ?? '',
-      slot2: results.slot_2?.value ?? '',
+      confirmedSlot: r.confirmed_slot?.value?.trim() ?? '',
+      shopSlot1: r.shop_suggested_slot_1?.value?.trim() ?? '',
+      shopSlot2: r.shop_suggested_slot_2?.value?.trim() ?? '',
     };
   }
 
-  // Fall back to flat tool call format
+  // Webhook tool format: flat payload sent during the call
   return {
     callId: payload.conversation_id ?? '',
-    userName: payload.user_name ?? '',
-    contactInfo: payload.contact_info ?? '',
-    slot1: payload.slot_1 ?? '',
-    slot2: payload.slot_2 ?? '',
+    confirmedSlot: (payload.confirmed_slot ?? '').trim(),
+    shopSlot1: (payload.shop_suggested_slot_1 ?? '').trim(),
+    shopSlot2: (payload.shop_suggested_slot_2 ?? '').trim(),
   };
 }
 
 export class RecordCallWebhookUseCase {
-  constructor(private readonly repository: IRemovalRequestRepository) {}
+  constructor(private readonly repository: ICallRecordRepository) {}
 
   async execute(payload: WebhookPayload): Promise<void> {
-    const { callId, userName, contactInfo, slot1, slot2 } = extractFields(payload);
+    const { callId, confirmedSlot, shopSlot1, shopSlot2 } = extractFields(payload);
 
-    if (!callId || !userName || !contactInfo || !slot1 || !slot2) {
-      return;
+    let status: CallRecord['status'];
+    const extra: Partial<CallRecord> = {};
+
+    if (confirmedSlot) {
+      status = 'confirmed';
+      extra.confirmedSlot = confirmedSlot;
+    } else if (shopSlot1) {
+      status = 'needs_recontact';
+      extra.shopSuggestedSlots = JSON.stringify([shopSlot1, shopSlot2].filter(Boolean));
+    } else {
+      status = 'failed';
     }
 
-    const record: RemovalRequestRecord = {
-      callId,
-      submittedAt: new Date().toISOString(),
-      userName,
-      contactInfo,
-      slot1,
-      slot2,
-    };
+    if (callId) {
+      await this.repository.updateStatus(callId, status, extra.confirmedSlot, extra.shopSuggestedSlots);
+    } else {
+      // Tool call without conversation_id: find in_progress record by shopPhone
+      const shopPhone = (payload as { shop_phone?: string }).shop_phone?.trim() ?? '';
+      const existing = shopPhone
+        ? await this.repository.findLatestInProgressByShopPhone(shopPhone)
+        : null;
 
-    await this.repository.save(record);
+      if (existing) {
+        await this.repository.updateStatus(existing.callId, status, extra.confirmedSlot, extra.shopSuggestedSlots);
+      } else {
+        await this.repository.save({
+          callId: randomUUID(),
+          submittedAt: new Date().toISOString(),
+          shopPhone,
+          customerSlots: '[]',
+          status,
+          ...extra,
+        });
+      }
+    }
   }
 }

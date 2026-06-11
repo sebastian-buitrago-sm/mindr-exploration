@@ -1,15 +1,19 @@
 import type { APIGatewayProxyEventV2 } from 'aws-lambda';
 import { handler } from '../../../src/presentation/handlers/callRequestHandler';
 
-jest.mock('../../../src/infrastructure/elevenlabs/ElevenLabsCallService', () => ({
-  ElevenLabsCallService: jest.fn().mockImplementation(() => ({
-    initiateCall: jest.fn().mockResolvedValue({
+jest.mock('../../../src/application/useCases/InitiateCallUseCase', () => ({
+  InitiateCallUseCase: jest.fn().mockImplementation(() => ({
+    execute: jest.fn().mockResolvedValue({
       conversationId: 'conv_test',
       callSid: 'CA_test',
-      success: true,
-      message: 'Call initiated',
-      initiatedAt: '2026-06-10T14:30:00.000Z',
     }),
+  })),
+}));
+
+jest.mock('../../../src/infrastructure/dynamo/DynamoCallRecordRepository', () => ({
+  DynamoCallRecordRepository: jest.fn().mockImplementation(() => ({
+    save: jest.fn().mockResolvedValue(undefined),
+    findAll: jest.fn().mockResolvedValue([]),
   })),
 }));
 
@@ -20,33 +24,41 @@ const makeEvent = (body: unknown): APIGatewayProxyEventV2 =>
     requestContext: { http: { method: 'POST' } },
   }) as unknown as APIGatewayProxyEventV2;
 
-describe('callRequestHandler validation', () => {
-  it('returns 400 when fullName is missing', async () => {
-    const response = await handler(
-      makeEvent({ phoneNumber: '+15551234567', tcpaConsent: true, submittedAt: '2026-06-10T14:30:00.000Z' })
-    );
-    expect(response.statusCode).toBe(400);
-    expect(JSON.parse(response.body as string).code).toBe('VALIDATION_ERROR');
+const validBody = {
+  shopPhone: '+12065550100',
+  customerSlots: ['October 10th 2026 at 10:00am', 'October 11th 2026 at 2:00pm'],
+  submittedAt: '2026-06-10T14:00:00.000Z',
+};
+
+describe('callRequestHandler', () => {
+  it('(a) valid body → 200 with conversationId, callSid, message', async () => {
+    const res = await handler(makeEvent(validBody));
+    expect(res.statusCode).toBe(200);
+    const body = JSON.parse(res.body as string);
+    expect(body.conversationId).toBe('conv_test');
+    expect(body.callSid).toBe('CA_test');
   });
 
-  it('returns 400 when phoneNumber is not E.164', async () => {
-    const response = await handler(
-      makeEvent({ fullName: 'Jane', phoneNumber: '5551234567', tcpaConsent: true, submittedAt: '2026-06-10T14:30:00.000Z' })
-    );
-    expect(response.statusCode).toBe(400);
+  it('(b) missing shopPhone → 400 VALIDATION_ERROR', async () => {
+    const res = await handler(makeEvent({ ...validBody, shopPhone: undefined }));
+    expect(res.statusCode).toBe(400);
+    expect(JSON.parse(res.body as string).code).toBe('VALIDATION_ERROR');
   });
 
-  it('returns 400 when tcpaConsent is false', async () => {
-    const response = await handler(
-      makeEvent({ fullName: 'Jane', phoneNumber: '+15551234567', tcpaConsent: false, submittedAt: '2026-06-10T14:30:00.000Z' })
-    );
-    expect(response.statusCode).toBe(400);
+  it('(c) customerSlots with 5 items → 400 VALIDATION_ERROR', async () => {
+    const res = await handler(makeEvent({ ...validBody, customerSlots: ['a', 'b', 'c', 'd', 'e'] }));
+    expect(res.statusCode).toBe(400);
+    expect(JSON.parse(res.body as string).code).toBe('VALIDATION_ERROR');
   });
 
-  it('returns 200 with valid payload', async () => {
-    const response = await handler(
-      makeEvent({ fullName: 'Jane', phoneNumber: '+15551234567', tcpaConsent: true, submittedAt: '2026-06-10T14:30:00.000Z' })
-    );
-    expect(response.statusCode).toBe(200);
+  it('(d) empty customerSlots → 400 VALIDATION_ERROR', async () => {
+    const res = await handler(makeEvent({ ...validBody, customerSlots: [] }));
+    expect(res.statusCode).toBe(400);
+    expect(JSON.parse(res.body as string).code).toBe('VALIDATION_ERROR');
+  });
+
+  it('(e) CORS headers present on all responses', async () => {
+    const res = await handler(makeEvent(validBody));
+    expect(res.headers?.['Access-Control-Allow-Origin']).toBe('*');
   });
 });

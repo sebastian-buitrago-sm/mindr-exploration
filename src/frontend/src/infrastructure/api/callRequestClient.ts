@@ -1,13 +1,16 @@
-import type { CallRecord } from '../../domain/entities/CallRecord';
-
 export interface CallRequestPayload {
-  fullName: string;
-  phoneNumber: string;
-  tcpaConsent: true;
+  shopPhone: string;
+  customerSlots: string[];
   submittedAt: string;
 }
 
-export async function postCallRequest(payload: CallRequestPayload): Promise<CallRecord> {
+export interface CallRequestResponse {
+  conversationId: string;
+  callSid: string;
+  message: string;
+}
+
+export async function postCallRequest(payload: CallRequestPayload): Promise<CallRequestResponse> {
   const baseUrl = import.meta.env.VITE_API_BASE_URL ?? '';
   const response = await fetch(`${baseUrl}/api/v1/call-request`, {
     method: 'POST',
@@ -17,7 +20,7 @@ export async function postCallRequest(payload: CallRequestPayload): Promise<Call
 
   if (!response.ok) {
     const data = await response.json().catch(() => ({}));
-    throw new Error(data.error ?? 'Failed to initiate call. Please try again.');
+    throw new Error((data as { error?: string }).error ?? 'Failed to initiate call.');
   }
 
   return response.json();

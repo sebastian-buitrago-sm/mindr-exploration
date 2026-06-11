@@ -1,52 +1,57 @@
-import { APIGatewayProxyEventV2, APIGatewayProxyStructuredResultV2 } from 'aws-lambda';
+import type { APIGatewayProxyEventV2, APIGatewayProxyStructuredResultV2 } from 'aws-lambda';
 import { handler } from '../../../src/presentation/handlers/removalRequestsHandler';
+import type { CallRecord } from '../../../src/domain/entities/CallRecord';
 
-jest.mock('../../../src/infrastructure/dynamo/DynamoRemovalRequestRepository');
+type Res = APIGatewayProxyStructuredResultV2;
 
 const mockExecute = jest.fn();
-jest.mock('../../../src/application/useCases/GetRemovalRequestsUseCase', () => ({
-  GetRemovalRequestsUseCase: jest.fn().mockImplementation(() => ({
-    execute: mockExecute,
+jest.mock('../../../src/application/useCases/GetCallRecordsUseCase', () => ({
+  GetCallRecordsUseCase: jest.fn().mockImplementation(() => ({ execute: mockExecute })),
+}));
+
+jest.mock('../../../src/infrastructure/dynamo/DynamoCallRecordRepository', () => ({
+  DynamoCallRecordRepository: jest.fn().mockImplementation(() => ({
+    save: jest.fn().mockResolvedValue(undefined),
+    findAll: jest.fn().mockResolvedValue([]),
   })),
 }));
 
-const makeEvent = (): Partial<APIGatewayProxyEventV2> => ({
-  headers: { accept: 'application/json' },
-});
+const makeEvent = (): APIGatewayProxyEventV2 =>
+  ({ headers: {} }) as unknown as APIGatewayProxyEventV2;
+
+const sampleRecords: CallRecord[] = [
+  {
+    callId: 'conv_001',
+    submittedAt: '2026-06-10T12:00:00.000Z',
+    shopPhone: '+12065550100',
+    customerSlots: JSON.stringify(['slot1']),
+    status: 'confirmed',
+    confirmedSlot: 'October 10th 2026 at 10:00am',
+  },
+];
 
 describe('removalRequestsHandler', () => {
   beforeEach(() => jest.clearAllMocks());
 
-  it('returns 200 with records array', async () => {
-    const records = [
-      {
-        callId: 'conv_001',
-        submittedAt: '2026-06-10T12:00:00.000Z',
-        userName: 'Alice',
-        contactInfo: '+15551111111',
-        slot1: 'Monday at 9am',
-        slot2: 'Tuesday at 10am',
-      },
-    ];
-    mockExecute.mockResolvedValueOnce(records);
-    const result = (await handler(makeEvent() as APIGatewayProxyEventV2)) as APIGatewayProxyStructuredResultV2;
-    expect(result.statusCode).toBe(200);
-    const body = JSON.parse(result.body as string);
+  it('(a) returns {"records":[...]} with HTTP 200', async () => {
+    mockExecute.mockResolvedValueOnce(sampleRecords);
+    const res = (await handler(makeEvent())) as Res;
+    expect(res.statusCode).toBe(200);
+    const body = JSON.parse(res.body as string);
     expect(body.records).toHaveLength(1);
     expect(body.records[0].callId).toBe('conv_001');
   });
 
-  it('returns 200 with empty records array when none exist', async () => {
+  it('(b) returns {"records":[]} when store is empty', async () => {
     mockExecute.mockResolvedValueOnce([]);
-    const result = (await handler(makeEvent() as APIGatewayProxyEventV2)) as APIGatewayProxyStructuredResultV2;
-    expect(result.statusCode).toBe(200);
-    const body = JSON.parse(result.body as string);
-    expect(body.records).toEqual([]);
+    const res = (await handler(makeEvent())) as Res;
+    expect(res.statusCode).toBe(200);
+    expect(JSON.parse(res.body as string).records).toEqual([]);
   });
 
-  it('includes CORS headers in the response', async () => {
+  it('(c) CORS headers present', async () => {
     mockExecute.mockResolvedValueOnce([]);
-    const result = (await handler(makeEvent() as APIGatewayProxyEventV2)) as APIGatewayProxyStructuredResultV2;
-    expect(result.headers).toHaveProperty('Access-Control-Allow-Origin');
+    const res = (await handler(makeEvent())) as Res;
+    expect(res.headers?.['Access-Control-Allow-Origin']).toBe('*');
   });
 });

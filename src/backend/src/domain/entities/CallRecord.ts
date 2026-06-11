@@ -1,7 +1,9 @@
 export interface CallRecord {
-  conversationId: string;
-  callSid: string;
-  success: boolean;
-  message: string;
-  initiatedAt: string; // ISO 8601
+  callId: string;
+  submittedAt: string;
+  shopPhone: string;
+  customerSlots: string;       // JSON-serialized string[]
+  status: 'confirmed' | 'needs_recontact' | 'failed' | 'in_progress';
+  confirmedSlot?: string;
+  shopSuggestedSlots?: string; // JSON-serialized string[]
 }
