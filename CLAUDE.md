@@ -46,5 +46,5 @@ Seguir este flujo para crear cualquier nueva funcionalidad o fase de implementac
 <!-- SPECKIT START -->
 For additional context about technologies to be used, project structure,
 shell commands, and other important information, read the current plan at:
-specs/001-device-removal-call/plan.md
+specs/002-call-records-dashboard/plan.md
 <!-- SPECKIT END -->

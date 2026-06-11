@@ -3,3 +3,4 @@ elevenlabs_api_key               = "sk_ac7117b12ca5212c03e4101f6c92522a90838e340
 elevenlabs_agent_id              = "agent_0301kts8hf68epv9fy5c7e21zzjs"
 elevenlabs_agent_phone_number_id = "phnum_8601ktskdsr3fkr861aqx2k14xsc"
 lambda_zip_path                  = "../backend/dist/lambda.zip"
+dynamodb_table_name              = "intoxalock-removal-requests"

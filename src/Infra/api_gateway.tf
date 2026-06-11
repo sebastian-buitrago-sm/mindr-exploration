@@ -4,10 +4,10 @@ resource "aws_apigatewayv2_api" "http_api" {
 
   cors_configuration {
     allow_origins = [
-      "https://${aws_cloudfront_distribution.frontend.domain_name}",
+      "https://d2q9g2l6xvsavx.cloudfront.net",
       "http://localhost:3000",
     ]
-    allow_methods = ["POST", "OPTIONS"]
+    allow_methods = ["POST", "GET", "OPTIONS"]
     allow_headers = ["Content-Type"]
     max_age       = 300
   }
@@ -30,4 +30,30 @@ resource "aws_apigatewayv2_route" "call_request" {
   api_id    = aws_apigatewayv2_api.http_api.id
   route_key = "POST /api/v1/call-request"
   target    = "integrations/${aws_apigatewayv2_integration.lambda.id}"
+}
+
+resource "aws_apigatewayv2_integration" "call_webhook" {
+  api_id                 = aws_apigatewayv2_api.http_api.id
+  integration_type       = "AWS_PROXY"
+  integration_uri        = aws_lambda_function.call_webhook.invoke_arn
+  payload_format_version = "2.0"
+}
+
+resource "aws_apigatewayv2_route" "call_webhook" {
+  api_id    = aws_apigatewayv2_api.http_api.id
+  route_key = "POST /api/v1/webhook/call-completed"
+  target    = "integrations/${aws_apigatewayv2_integration.call_webhook.id}"
+}
+
+resource "aws_apigatewayv2_integration" "removal_requests" {
+  api_id                 = aws_apigatewayv2_api.http_api.id
+  integration_type       = "AWS_PROXY"
+  integration_uri        = aws_lambda_function.removal_requests.invoke_arn
+  payload_format_version = "2.0"
+}
+
+resource "aws_apigatewayv2_route" "removal_requests" {
+  api_id    = aws_apigatewayv2_api.http_api.id
+  route_key = "GET /api/v1/removal-requests"
+  target    = "integrations/${aws_apigatewayv2_integration.removal_requests.id}"
 }

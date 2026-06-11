@@ -25,3 +25,9 @@ variable "lambda_zip_path" {
   type        = string
   default     = "../backend/dist/lambda.zip"
 }
+
+variable "dynamodb_table_name" {
+  description = "DynamoDB table name for storing removal request records"
+  type        = string
+  default     = "intoxalock-removal-requests"
+}

@@ -1,0 +1,85 @@
+{
+  "type": "webhook",
+  "name": "save_removal_request",
+  "description": "Saves the user's device removal request to the database. Call this tool after the user confirms their summary in Step 3. Pass the user's name, contact information, and the two available time slots they provided.",
+  "api_schema": {
+    "url": "https://fgx1ba4g78.execute-api.us-east-1.amazonaws.com/api/v1/webhook/call-completed",
+    "method": "POST",
+    "path_params_schema": [],
+    "query_params_schema": [],
+    "request_body_schema": {
+      "id": "body",
+      "type": "object",
+      "description": "Removal request data collected during the conversation.",
+      "required": true,
+      "properties": [
+        {
+          "id": "conversation_id",
+          "type": "string",
+          "description": "The unique identifier of this conversation, provided automatically by ElevenLabs.",
+          "dynamic_variable": "conversation_id",
+          "constant_value": "",
+          "value_type": "dynamic_variable",
+          "required": true,
+          "enum": null
+        },
+        {
+          "id": "user_name",
+          "type": "string",
+          "description": "The full name of the user as stated during the call.",
+          "dynamic_variable": "",
+          "constant_value": "",
+          "value_type": "llm_prompt",
+          "required": true,
+          "enum": null
+        },
+        {
+          "id": "contact_info",
+          "type": "string",
+          "description": "The phone number or email address the user provided to be contacted for appointment confirmation.",
+          "dynamic_variable": "",
+          "constant_value": "",
+          "value_type": "llm_prompt",
+          "required": true,
+          "enum": null
+        },
+        {
+          "id": "slot_1",
+          "type": "string",
+          "description": "The first date and time the user is available for the device removal appointment, exactly as spoken by the user.",
+          "dynamic_variable": "",
+          "constant_value": "",
+          "value_type": "llm_prompt",
+          "required": true,
+          "enum": null
+        },
+        {
+          "id": "slot_2",
+          "type": "string",
+          "description": "The second date and time the user is available for the device removal appointment, exactly as spoken by the user.",
+          "dynamic_variable": "",
+          "constant_value": "",
+          "value_type": "llm_prompt",
+          "required": true,
+          "enum": null
+        }
+      ],
+      "value_type": "llm_prompt"
+    },
+    "request_headers": [],
+    "content_type": "application/json",
+    "auth_connection": null
+  },
+  "response_timeout_secs": 20,
+  "dynamic_variables": {
+    "dynamic_variable_placeholders": {}
+  },
+  "assignments": [],
+  "disable_interruptions": true,
+  "pre_tool_speech": "auto",
+  "tool_call_sound": null,
+  "tool_call_sound_behavior": "auto",
+  "execution_mode": "immediate",
+  "tool_error_handling_mode": "auto",
+  "response_mocks": []
+}
