@@ -23,7 +23,8 @@ export const handler = async (
       headers: CORS_HEADERS,
       body: JSON.stringify({ records }),
     };
-  } catch {
+  } catch (err) {
+    console.error('removalRequestsHandler error', err);
     return {
       statusCode: 500,
       headers: CORS_HEADERS,

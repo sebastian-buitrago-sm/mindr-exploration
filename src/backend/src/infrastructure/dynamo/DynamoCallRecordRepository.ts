@@ -72,6 +72,6 @@ export class DynamoCallRecordRepository implements ICallRecordRepository {
     );
 
     const items = (result.Items ?? []) as CallRecord[];
-    return items.sort((a, b) => b.submittedAt.localeCompare(a.submittedAt));
+    return items.sort((a, b) => (b.submittedAt ?? '').localeCompare(a.submittedAt ?? ''));
   }
 }

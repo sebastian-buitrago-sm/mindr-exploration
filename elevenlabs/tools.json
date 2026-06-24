@@ -1,0 +1,9 @@
+{
+    "tools": [
+        {
+            "type": "webhook",
+            "config": "tool_configs/save_call_result.json",
+            "id": "tool_5301kvxne2t5e5xbx8906becv2n6"
+        }
+    ]
+}

@@ -58,6 +58,8 @@ export class InitiateCallUseCase {
     });
 
     if (!response.ok) {
+      const errBody = await response.text().catch(() => '');
+      console.error('ElevenLabs outbound-call error', response.status, errBody);
       throw new CallServiceError('Failed to initiate outbound call');
     }
 

@@ -1,0 +1,51 @@
+{
+    "name": "save_call_result",
+    "description": "Persist the outcome of the scheduling call to the Intoxalock backend. Call this exactly once, right before closing the call, after you have either (a) verbally confirmed an agreed slot, or (b) collected the shop's own suggested availability, or (c) determined the call cannot proceed. Pass empty strings for any field that does not apply.",
+    "type": "webhook",
+    "api_schema": {
+        "url": "https://d7f24w2sa1.execute-api.us-east-1.amazonaws.com/api/v1/webhook/call-completed",
+        "method": "POST",
+        "request_body_schema": {
+            "type": "object",
+            "description": "Outcome of Daisy's scheduling call with the service center.",
+            "required": [
+                "conversation_id",
+                "confirmed_slot",
+                "shop_suggested_slot_1",
+                "shop_suggested_slot_2"
+            ],
+            "properties": {
+                "conversation_id": {
+                    "type": "string",
+                    "dynamic_variable": "system__conversation_id"
+                },
+                "shop_phone": {
+                    "type": "string",
+                    "dynamic_variable": "shop_phone"
+                },
+                "confirmed_slot": {
+                    "type": "string",
+                    "description": "The single time slot that the shop agreed to, written exactly as it was confirmed (e.g. 'October 10th 2023 12pm to 3pm'). This may be one of the customer's proposed slots OR a slot the shop proposed that you read back and confirmed. Empty string if no slot was confirmed on this call."
+                },
+                "shop_suggested_slot_1": {
+                    "type": "string",
+                    "description": "The first availability the shop proposed when none of the customer's slots worked (e.g. 'October 12th 2023 8am to 11am'). Empty string if the shop confirmed a customer slot or proposed nothing."
+                },
+                "shop_suggested_slot_2": {
+                    "type": "string",
+                    "description": "A second availability the shop proposed, as a backup for the customer. Empty string if the shop only gave one option or confirmed a customer slot."
+                }
+            }
+        },
+        "request_headers": {
+            "Content-Type": "application/json"
+        }
+    },
+    "response_timeout_secs": 20,
+    "dynamic_variables": {
+        "dynamic_variable_placeholders": {}
+    },
+    "assignments": [],
+    "disable_interruptions": false,
+    "force_pre_tool_speech": false
+}

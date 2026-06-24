@@ -1,0 +1,445 @@
+{
+    "name": "Daisy - Intoxalock Scheduler",
+    "conversation_config": {
+        "asr": {
+            "quality": "high",
+            "provider": "elevenlabs",
+            "user_input_audio_format": "pcm_16000",
+            "keywords": []
+        },
+        "turn": {
+            "turn_timeout": 7,
+            "silence_end_call_timeout": -1,
+            "mode": "turn",
+            "turn_eagerness": "normal",
+            "spelling_patience": "auto",
+            "speculative_turn": false,
+            "retranscribe_on_turn_timeout": false,
+            "turn_model": "turn_v3",
+            "interruption_ignore_terms": [],
+            "transcribe_on_disabled_interruptions": false,
+            "soft_timeout_config": {
+                "timeout_seconds": -1,
+                "message": "Hhmmmm...yeah.",
+                "additional_soft_timeout_messages": [],
+                "use_llm_generated_message": false,
+                "randomize_fillers": false,
+                "max_soft_timeouts_per_generation": 1
+            }
+        },
+        "tts": {
+            "model_id": "eleven_turbo_v2",
+            "voice_id": "cjVigY5qzO86Huf0OWal",
+            "supported_voices": [],
+            "expressive_mode": false,
+            "suggested_audio_tags": [],
+            "agent_output_audio_format": "pcm_16000",
+            "optimize_streaming_latency": 3,
+            "stability": 0.5,
+            "speed": 1,
+            "similarity_boost": 0.8,
+            "text_normalisation_type": "system_prompt",
+            "pronunciation_dictionary_locators": [],
+            "enable_phoneme_tags": false
+        },
+        "conversation": {
+            "text_only": false,
+            "max_duration_seconds": 600,
+            "client_events": [
+                "audio",
+                "interruption"
+            ],
+            "file_input": {
+                "enabled": true,
+                "max_files_per_conversation": 10
+            },
+            "monitoring_enabled": false,
+            "monitoring_events": [
+                "user_transcript",
+                "agent_response",
+                "agent_response_correction"
+            ],
+            "dtmf_input_settings": null,
+            "background_sound": {
+                "volume": 0.6,
+                "crossfade_loop": false
+            },
+            "source_attribution": false
+        },
+        "language_presets": {},
+        "vad": {
+            "background_voice_detection": false
+        },
+        "agent": {
+            "first_message": "Hi, I am Daisy calling from Intoxalock. We have a customer requesting an installation appointment. The customer has provided some times that work for them. May I check your availability?",
+            "language": "en",
+            "hinglish_mode": false,
+            "dynamic_variables": {
+                "dynamic_variable_placeholders": {
+                    "slot_1": "the first proposed time",
+                    "slot_2": "",
+                    "slot_3": "",
+                    "slot_4": "",
+                    "shop_phone": "the service center"
+                }
+            },
+            "disable_first_message_interruptions": false,
+            "max_conversation_duration_message": "",
+            "prompt": {
+                "prompt": "# ROLE AND IDENTITY\nYou are Daisy, a professional and friendly AI calling on behalf of Intoxalock.\nYour sole purpose on this call is to schedule a device installation appointment between an Intoxalock customer and this service center.\nDo NOT discuss any other topic.\n\n# CONTEXT\nYou are calling the service center (shop) because a customer has requested an installation appointment.\nThe customer has provided up to four time slots that work for them:\n- Slot 1: {{slot_1}}\n{{#if slot_2}}- Slot 2: {{slot_2}}{{/if}}\n{{#if slot_3}}- Slot 3: {{slot_3}}{{/if}}\n{{#if slot_4}}- Slot 4: {{slot_4}}{{/if}}\n\nYour goal: confirm ONE of these customer slots with the shop, OR collect the shop's own availability if none of the customer slots work.\n\n# COMMUNICATION STYLE\n- Be professional, polite, and concise.\n- Keep responses brief to minimize voice latency.\n- Ask only one question per turn.\n- Always confirm details verbally before closing.\n\n# CONVERSATION FLOW (Execute step-by-step)\n\n**Step 1: Offer customer slots one at a time**\n- Start with Slot 1. Ask: \"Do you have an opening on {{slot_1}}?\"\n- If the shop says YES: jump to Step 3 (confirm the slot).\n- If the shop says NO: move to the next slot (if available).\n- If Slot 2 is available, ask: \"No problem. Do you have an opening on {{slot_2}}?\"\n- Continue through all available slots.\n- If ALL provided slots are rejected, move to Step 2.\n\n**Step 2: Ask the shop for their availability (if all customer slots were rejected)**\n- Say: \"No problem. Can you share your next available date and time for an installation?\"\n- Note their first suggested slot.\n- Then ask: \"Can I know a second available time, in case the first doesn't work for our customer?\"\n- Note their second suggested slot (if provided).\n- Say: \"We will reach out to the customer and see if one of those times works. One moment while I log these details for our team.\"\n- Call `save_call_result` with: confirmed_slot=\"\", shop_suggested_slot_1=<first slot>, shop_suggested_slot_2=<second slot or empty string>.\n- Move to Step 4 (close).\n\n**Step 3: Verbally confirm the agreed slot (customer slot OR shop-suggested slot)**\n- Repeat the slot back clearly: \"Let me confirm: [full slot details] — is that correct?\"\n- If the shop confirms:\n  - Say: \"Perfect. One moment while I log this appointment for our team.\"\n  - Call `save_call_result` with: confirmed_slot=<the confirmed slot>, shop_suggested_slot_1=\"\", shop_suggested_slot_2=\"\".\n- If the shop corrects it: update and confirm again before calling the tool.\n\n**Step 4: Close the call**\n- Say: \"Thank you so much for your time. We will be in touch with the customer to confirm. Have a great day!\"\n- End the conversation.\n\n# EDGE CASES\n- If the shop says they are not the right person / asks you to call back: say \"Of course, thank you for letting me know. One moment while I note this for our team.\" — call `save_call_result` with all three slot fields as empty string — then say \"Have a great day!\" and end the call.\n- If the shop asks who the customer is: say \"I don't have the customer's personal details available on this call — our team will provide those when we confirm the appointment.\"\n- Never reveal customer PII (full name, address, personal contact info) during this call.\n\n# TOOL USAGE\n- You MUST call the `save_call_result` tool exactly once before closing the call, in every scenario above (confirmed slot, shop-suggested slots, or unable to proceed). Pass empty strings for any field that does not apply.",
+                "llm": "claude-sonnet-4-6",
+                "temperature": 0,
+                "max_tokens": -1,
+                "tool_ids": [
+                    "tool_5301kvxne2t5e5xbx8906becv2n6"
+                ],
+                "built_in_tools": {
+                    "update_state": null,
+                    "memory_entry_search": null,
+                    "memory_entry_create": null,
+                    "memory_entry_update": null,
+                    "memory_entry_delete": null,
+                    "agent_prompt_change": null,
+                    "procedure_update": null,
+                    "procedure_create": null,
+                    "procedure_delete": null,
+                    "transfer_to_genesys_chat": null
+                },
+                "enable_parallel_tool_calls": false,
+                "mcp_server_ids": [],
+                "native_mcp_server_ids": [],
+                "knowledge_base": [],
+                "speech_engine": null,
+                "ignore_default_personality": false,
+                "rag": {
+                    "enabled": false,
+                    "embedding_model": "e5_mistral_7b_instruct",
+                    "optional_rag_enabled": false,
+                    "max_vector_distance": 0.6,
+                    "max_documents_length": 50000,
+                    "max_retrieved_rag_chunks_count": 20
+                },
+                "backup_llm_config": {
+                    "preference": "default"
+                },
+                "cascade_timeout_seconds": 8,
+                "tools": [
+                    {
+                        "type": "webhook",
+                        "name": "save_call_result",
+                        "description": "Persist the outcome of the scheduling call to the Intoxalock backend. Call this exactly once, right before closing the call, after you have either (a) verbally confirmed an agreed slot, or (b) collected the shop's own suggested availability, or (c) determined the call cannot proceed. Pass empty strings for any field that does not apply.",
+                        "response_timeout_secs": 20,
+                        "disable_interruptions": false,
+                        "force_pre_tool_speech": false,
+                        "pre_tool_speech": "auto",
+                        "assignments": [],
+                        "tool_call_sound_behavior": "auto",
+                        "tool_error_handling_mode": "auto",
+                        "dynamic_variables": {
+                            "dynamic_variable_placeholders": {}
+                        },
+                        "execution_mode": "immediate",
+                        "api_schema": {
+                            "request_headers": {
+                                "Content-Type": "application/json"
+                            },
+                            "url": "https://d7f24w2sa1.execute-api.us-east-1.amazonaws.com/api/v1/webhook/call-completed",
+                            "method": "POST",
+                            "path_params_schema": {},
+                            "request_body_schema": {
+                                "type": "object",
+                                "required": [
+                                    "conversation_id",
+                                    "confirmed_slot",
+                                    "shop_suggested_slot_1",
+                                    "shop_suggested_slot_2"
+                                ],
+                                "description": "Outcome of Daisy's scheduling call with the service center.",
+                                "properties": {
+                                    "conversation_id": {
+                                        "type": "string",
+                                        "description": "",
+                                        "is_system_provided": false,
+                                        "dynamic_variable": "system__conversation_id",
+                                        "allowed_values_dynamic_variable": "",
+                                        "constant_value": "",
+                                        "is_omitted": false
+                                    },
+                                    "shop_phone": {
+                                        "type": "string",
+                                        "description": "",
+                                        "is_system_provided": false,
+                                        "dynamic_variable": "shop_phone",
+                                        "allowed_values_dynamic_variable": "",
+                                        "constant_value": "",
+                                        "is_omitted": false
+                                    },
+                                    "confirmed_slot": {
+                                        "type": "string",
+                                        "description": "The single time slot that the shop agreed to, written exactly as it was confirmed (e.g. 'October 10th 2023 12pm to 3pm'). This may be one of the customer's proposed slots OR a slot the shop proposed that you read back and confirmed. Empty string if no slot was confirmed on this call.",
+                                        "is_system_provided": false,
+                                        "dynamic_variable": "",
+                                        "allowed_values_dynamic_variable": "",
+                                        "constant_value": "",
+                                        "is_omitted": false
+                                    },
+                                    "shop_suggested_slot_1": {
+                                        "type": "string",
+                                        "description": "The first availability the shop proposed when none of the customer's slots worked (e.g. 'October 12th 2023 8am to 11am'). Empty string if the shop confirmed a customer slot or proposed nothing.",
+                                        "is_system_provided": false,
+                                        "dynamic_variable": "",
+                                        "allowed_values_dynamic_variable": "",
+                                        "constant_value": "",
+                                        "is_omitted": false
+                                    },
+                                    "shop_suggested_slot_2": {
+                                        "type": "string",
+                                        "description": "A second availability the shop proposed, as a backup for the customer. Empty string if the shop only gave one option or confirmed a customer slot.",
+                                        "is_system_provided": false,
+                                        "dynamic_variable": "",
+                                        "allowed_values_dynamic_variable": "",
+                                        "constant_value": "",
+                                        "is_omitted": false
+                                    }
+                                }
+                            },
+                            "content_type": "application/json",
+                            "auth_resolved_params": []
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "platform_settings": {
+        "evaluation": {
+            "criteria": []
+        },
+        "widget": {
+            "variant": "full",
+            "placement": "bottom-right",
+            "expandable": "never",
+            "avatar": {
+                "type": "orb",
+                "color1": "#2792dc",
+                "color2": "#9ce6e6"
+            },
+            "feedback_mode": "none",
+            "end_feedback": {
+                "type": "rating"
+            },
+            "bg_color": "#ffffff",
+            "text_color": "#000000",
+            "btn_color": "#000000",
+            "btn_text_color": "#ffffff",
+            "border_color": "#e1e1e1",
+            "focus_color": "#000000",
+            "shareable_page_show_terms": true,
+            "show_avatar_when_collapsed": false,
+            "disable_banner": false,
+            "markdown_link_allowed_hosts": [],
+            "markdown_link_include_www": true,
+            "markdown_link_allow_http": true,
+            "mic_muting_enabled": false,
+            "transcript_enabled": false,
+            "text_input_enabled": true,
+            "conversation_mode_toggle_enabled": false,
+            "default_expanded": false,
+            "always_expanded": false,
+            "dismissible": false,
+            "show_agent_status": false,
+            "show_conversation_id": true,
+            "strip_audio_tags": true,
+            "text_contents": {},
+            "styles": {},
+            "language_selector": false,
+            "supports_text_only": true,
+            "language_presets": {}
+        },
+        "data_collection": {
+            "confirmed_slot": {
+                "type": "string",
+                "description": "The single time slot the shop agreed to (a customer-proposed slot or a shop-proposed slot that was read back and confirmed). Empty string if no slot was confirmed.",
+                "is_system_provided": false,
+                "dynamic_variable": "",
+                "allowed_values_dynamic_variable": "",
+                "constant_value": "",
+                "is_omitted": false
+            },
+            "shop_suggested_slot_1": {
+                "type": "string",
+                "description": "The first availability the shop proposed when none of the customer's slots worked. Empty string otherwise.",
+                "is_system_provided": false,
+                "dynamic_variable": "",
+                "allowed_values_dynamic_variable": "",
+                "constant_value": "",
+                "is_omitted": false
+            },
+            "shop_suggested_slot_2": {
+                "type": "string",
+                "description": "A second availability the shop proposed as a backup. Empty string if only one or none was provided.",
+                "is_system_provided": false,
+                "dynamic_variable": "",
+                "allowed_values_dynamic_variable": "",
+                "constant_value": "",
+                "is_omitted": false
+            }
+        },
+        "data_collection_scopes": {},
+        "overrides": {
+            "conversation_config_override": {
+                "asr": {
+                    "keywords": false
+                },
+                "turn": {
+                    "soft_timeout_config": {
+                        "message": false
+                    }
+                },
+                "tts": {
+                    "voice_id": false,
+                    "stability": false,
+                    "speed": false,
+                    "similarity_boost": false
+                },
+                "conversation": {
+                    "text_only": true
+                },
+                "agent": {
+                    "first_message": false,
+                    "language": false,
+                    "max_conversation_duration_message": false,
+                    "prompt": {
+                        "prompt": false,
+                        "llm": false,
+                        "tool_ids": false,
+                        "native_mcp_server_ids": false,
+                        "knowledge_base": false
+                    }
+                }
+            },
+            "custom_llm_extra_body": false,
+            "enable_conversation_initiation_client_data_from_webhook": false,
+            "enable_starting_workflow_node_id_from_client": false
+        },
+        "workspace_overrides": {
+            "webhooks": {
+                "events": [
+                    "transcript"
+                ],
+                "transcript_format": "json"
+            }
+        },
+        "testing": {
+            "attached_tests": [],
+            "referenced_tests_ids": []
+        },
+        "archived": false,
+        "guardrails": {
+            "version": "1",
+            "focus": {
+                "is_enabled": false
+            },
+            "prompt_injection": {
+                "is_enabled": false
+            },
+            "content": {
+                "execution_mode": "streaming",
+                "config": {
+                    "sexual": {
+                        "is_enabled": false,
+                        "threshold": "medium"
+                    },
+                    "violence": {
+                        "is_enabled": false,
+                        "threshold": "medium"
+                    },
+                    "harassment": {
+                        "is_enabled": false,
+                        "threshold": "medium"
+                    },
+                    "self_harm": {
+                        "is_enabled": false,
+                        "threshold": "medium"
+                    },
+                    "profanity": {
+                        "is_enabled": false,
+                        "threshold": "medium"
+                    },
+                    "religion_or_politics": {
+                        "is_enabled": false,
+                        "threshold": "medium"
+                    },
+                    "medical_and_legal_information": {
+                        "is_enabled": false,
+                        "threshold": "medium"
+                    }
+                },
+                "trigger_action": {
+                    "type": "end_call"
+                }
+            },
+            "moderation": null,
+            "custom": {
+                "config": {
+                    "configs": []
+                }
+            }
+        },
+        "auth": {
+            "enable_auth": false,
+            "allowlist": [],
+            "require_origin_header": false
+        },
+        "call_limits": {
+            "agent_concurrency_limit": -1,
+            "daily_limit": 100000,
+            "bursting_enabled": true
+        },
+        "ban": null,
+        "smb_metadata": null,
+        "privacy": {
+            "record_voice": true,
+            "retention_days": -1,
+            "delete_transcript_and_pii": false,
+            "delete_audio": false,
+            "apply_to_existing_conversations": false,
+            "zero_retention_mode": false,
+            "conversation_history_redaction": {
+                "enabled": false,
+                "entities": []
+            }
+        },
+        "trust_context": "unknown",
+        "analysis_llm": "gemini-2.5-flash",
+        "topic_discovery": {
+            "enabled": true
+        },
+        "alerting": null,
+        "overview_dashboard_template_id": null,
+        "safety": {
+            "is_blocked_ivc": false,
+            "is_blocked_non_ivc": false,
+            "ignore_safety_evaluation": false
+        }
+    },
+    "tags": [
+        "intoxalock",
+        "scheduler",
+        "outbound"
+    ],
+    "workflow": {
+        "edges": {},
+        "nodes": {
+            "start_node": {
+                "type": "start",
+                "position": {
+                    "x": 0,
+                    "y": 0
+                },
+                "edge_order": []
+            }
+        },
+        "prevent_subagent_loops": false
+    }
+}
