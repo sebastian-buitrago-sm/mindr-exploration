@@ -3,7 +3,7 @@
     "conversation_config": {
         "asr": {
             "quality": "high",
-            "provider": "elevenlabs",
+            "provider": "scribe_realtime",
             "user_input_audio_format": "pcm_16000",
             "keywords": []
         },
