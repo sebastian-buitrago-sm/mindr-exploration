@@ -5,6 +5,8 @@
 - The clients needs first to accept the Quote to generate the work order or it will be just informed ? 
 - For reaching the client would we also build an AI agent? 
 - TTL ?  => how long the center's newly-proposed slots stay reserved for this customer before the center is free to give them to someone else.
+- How much time before the actual date we will give users to set the scheduled slots 
+- What will be the hold headline 
 
 
 # Questions or us 
