@@ -704,7 +704,7 @@
         </mxGraphModel>
     </diagram>
     <diagram id="lZ2uFSXMdfQjYWqnXBsl" name="AWS architecture diagram ">
-        <mxGraphModel dx="1714" dy="1181" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="1487" dy="871" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -807,10 +807,10 @@
                 <mxCell id="S1-CC" value="STAGE · CUSTOMER CALLBACK (decline path)  —  Slot Hold Window · voice confirm new date · retry ×4" style="rounded=1;arcSize=3;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#9673a6;fontColor=#9673a6;dashed=1;verticalAlign=top;align=left;fontStyle=1;fontSize=12;spacingLeft=12;spacingTop=8;" parent="1" vertex="1">
                     <mxGeometry x="130" y="1560" width="760" height="720" as="geometry"/>
                 </mxCell>
-                <mxCell id="S1-WO" value="STAGE · WORK ORDER &amp; CONFIRM  —  external WO API (Retry/Catch) → confirmed SMS/email   ▹ Phase 4" style="rounded=1;arcSize=3;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#2e7d32;fontColor=#2e7d32;dashed=1;verticalAlign=top;align=left;fontStyle=1;fontSize=12;spacingLeft=12;spacingTop=8;" parent="1" vertex="1">
+                <mxCell id="S1-WO" value="STAGE · WORK ORDER &amp;amp; CONFIRM  —  external Work Order API → confirmed Customer SMS/email&amp;nbsp;" style="rounded=1;arcSize=3;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#2e7d32;fontColor=#2e7d32;dashed=1;verticalAlign=top;align=left;fontStyle=1;fontSize=12;spacingLeft=12;spacingTop=8;" parent="1" vertex="1">
                     <mxGeometry x="130" y="2340" width="760" height="230" as="geometry"/>
                 </mxCell>
-                <mxCell id="S1-RM" value="STAGE · REMINDERS (Phase 3)  —  Wait T-12h → appointment reminder / non-confirmation warning   ▹ Phase 4" style="rounded=1;arcSize=3;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#3b5b8c;fontColor=#3b5b8c;dashed=1;verticalAlign=top;align=left;fontStyle=1;fontSize=12;spacingLeft=12;spacingTop=8;" parent="1" vertex="1">
+                <mxCell id="S1-RM" value="STAGE · REMINDERS —  Wait T-12h → appointment reminder&amp;nbsp;&amp;nbsp;" style="rounded=1;arcSize=3;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#3b5b8c;fontColor=#3b5b8c;dashed=1;verticalAlign=top;align=left;fontStyle=1;fontSize=12;spacingLeft=12;spacingTop=8;" parent="1" vertex="1">
                     <mxGeometry x="130" y="2620" width="760" height="230" as="geometry"/>
                 </mxCell>
                 <mxCell id="S1-ESC" value="STAGE · ESCALATION (shared)  —  escalate-to-rep API + full history   ▹ Phase 4" style="rounded=1;arcSize=3;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#cc0000;fontColor=#cc0000;dashed=1;verticalAlign=top;align=left;fontStyle=1;fontSize=12;spacingLeft=12;spacingTop=8;" parent="1" vertex="1">
@@ -862,14 +862,8 @@
                 <mxCell id="S1-el2" value="2 · call ends → webhook&#xa;(result + taskToken)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;strokeColor=#6C3FB5;fontSize=10;fontColor=#6C3FB5;labelBackgroundColor=#F7F7F7;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;jumpStyle=arc;jumpSize=8;" parent="1" source="S1-el" target="S1-wh" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="S1-wh3" value="3 · SendTaskSuccess → resume OUTBOUND CALL SERVICE (via taskToken)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;strokeColor=#6C3FB5;dashed=1;fontSize=10;fontColor=#6C3FB5;labelBackgroundColor=#F7F7F7;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;jumpStyle=arc;jumpSize=8;" parent="1" source="S1-wh" target="P-ch3" edge="1">
-                    <mxGeometry relative="1" as="geometry">
-                        <Array as="points">
-                            <mxPoint x="-410" y="1552"/>
-                            <mxPoint x="-410" y="1094"/>
-                            <mxPoint x="1200" y="1094"/>
-                        </Array>
-                    </mxGeometry>
+                <mxCell id="S1-wh3" value="&lt;span style=&quot;color: rgb(108, 63, 181);&quot;&gt;Resume OUTBOUND CALL SERVICE)&lt;/span&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;strokeColor=#6C3FB5;dashed=1;fontSize=10;fontColor=#6C3FB5;labelBackgroundColor=#F7F7F7;exitX=0;exitY=0.5;exitDx=0;exitDy=0;jumpStyle=arc;jumpSize=8;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" parent="1" source="S1-wh" target="P-ci" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="S1-wh4" value="4 · update: outcome / quote / status" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;strokeColor=#8a8a8a;fontSize=10;fontColor=#5a5a5a;labelBackgroundColor=#F7F7F7;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;jumpStyle=arc;jumpSize=8;" parent="1" source="S1-wh" target="S1-req" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
@@ -1142,18 +1136,29 @@
                 <mxCell id="S1-elcout" value="1 · start call · customer agent&#xa;(taskToken + new date)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;strokeColor=#6C3FB5;fontSize=10;fontColor=#6C3FB5;labelBackgroundColor=#F7F7F7;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;jumpStyle=arc;jumpSize=8;" parent="1" source="P3-ci" target="S1-elc" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
-                            <mxPoint x="-450" y="2056"/>
-                            <mxPoint x="-450" y="1960"/>
-                            <mxPoint x="-340" y="1960"/>
+                            <mxPoint x="-420" y="2056"/>
+                            <mxPoint x="-420" y="1974"/>
                         </Array>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="S1-elc2" value="2 · call ends → webhook&#xa;(result + taskToken)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;strokeColor=#6C3FB5;fontSize=10;fontColor=#6C3FB5;labelBackgroundColor=#F7F7F7;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.3;entryDx=0;entryDy=0;jumpStyle=arc;jumpSize=8;" parent="1" source="S1-elc" target="S1-wh" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
-                            <mxPoint x="-430" y="1338"/>
-                            <mxPoint x="-430" y="1539"/>
+                            <mxPoint x="-450" y="1950"/>
+                            <mxPoint x="-450" y="1539"/>
                         </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="vHSFawIDSK3GQfABt7pg-1" value="3 · SendTaskSuccess → resume OUTBOUND CALL SERVICE (via taskToken)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;strokeColor=#6C3FB5;dashed=1;fontSize=10;fontColor=#6C3FB5;labelBackgroundColor=#F7F7F7;exitX=1;exitY=0.5;exitDx=0;exitDy=0;jumpStyle=arc;jumpSize=8;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" source="S1-wh" target="P3-ci">
+                    <mxGeometry x="-0.1994" y="-268" relative="1" as="geometry">
+                        <mxPoint x="-350" y="1562" as="sourcePoint"/>
+                        <mxPoint x="180" y="1318" as="targetPoint"/>
+                        <mxPoint x="-1" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="vHSFawIDSK3GQfABt7pg-2" value="&lt;span style=&quot;color: rgb(108, 63, 181); font-size: 10px; background-color: rgb(247, 247, 247);&quot;&gt;Resume OUTBOUND CALL SERVICE)&lt;/span&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="vHSFawIDSK3GQfABt7pg-1">
+                    <mxGeometry x="-0.7604" y="-1" relative="1" as="geometry">
+                        <mxPoint x="14" y="327" as="offset"/>
                     </mxGeometry>
                 </mxCell>
             </root>
