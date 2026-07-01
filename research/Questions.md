@@ -1,5 +1,12 @@
 
 
+# Questions Wed Jul 1 2026 
+
+- The clients needs first to accept the Quote to generate the work order or it will be just informed ? 
+- For reaching the client would we also build an AI agent? 
+
+
+
 # Questions or us 
 - do they operate only in USA? 
 - which regulation do we need to follow 
