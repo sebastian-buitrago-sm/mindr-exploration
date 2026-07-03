@@ -2,6 +2,9 @@
 
 # Questions Wed Jul 1 2026 
 
+
+Handle bussy line exception 
+
 - The clients needs first to accept the Quote to generate the work order or it will be just informed ? 
 - For reaching the client would we also build an AI agent? 
 - TTL ?  => how long the center's newly-proposed slots stay reserved for this customer before the center is free to give them to someone else.
