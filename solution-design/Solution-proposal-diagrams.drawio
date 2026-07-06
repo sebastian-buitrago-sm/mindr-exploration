@@ -347,7 +347,7 @@
         </mxGraphModel>
     </diagram>
     <diagram id="lZ2uFSXMdfQjYWqnXBsl" name="AWS architecture diagram ">
-        <mxGraphModel dx="2210" dy="1613" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="1341" dy="559" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -616,7 +616,7 @@
                     <mxGeometry x="140" y="2160" width="300" height="64" as="geometry"/>
                 </mxCell>
                 <mxCell id="P3-cc6i" value="?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#2E73B8;strokeColor=none;fontColor=#ffffff;fontStyle=1;fontSize=14;" parent="1" vertex="1">
-                    <mxGeometry x="182" y="2176" width="32" height="32" as="geometry"/>
+                    <mxGeometry x="160" y="2176" width="32" height="32" as="geometry"/>
                 </mxCell>
                 <mxCell id="P3-e1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;strokeColor=#8a8a8a;fontSize=10;fontColor=#5a5a5a;labelBackgroundColor=#F7F7F7;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;jumpStyle=arc;jumpSize=8;" parent="1" source="P3-hold" target="P3-wait" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
